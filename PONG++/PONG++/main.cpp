@@ -1,11 +1,16 @@
 #include <SFML/Graphics.hpp>
 #include "Menu.h"
 #include "NivelMenu.h"
+#include "Musica.h" // Incluye el archivo de cabecera de la clase Musica
 
 int main() {
     sf::RenderWindow window(sf::VideoMode(1200, 720), "Pong++");
     Menu menu(window.getSize().x, window.getSize().y);
     NivelMenu menuNiveles(window.getSize().x, window.getSize().y);
+
+    Musica musica; // Crea una instancia de la clase Musica
+    musica.cargarMusica(); // Carga la música desde "musicamenu.mp3"
+    musica.reproducir(); // Reproduce la música
 
     bool inMenu = true;
     bool inNivelMenu = false;
