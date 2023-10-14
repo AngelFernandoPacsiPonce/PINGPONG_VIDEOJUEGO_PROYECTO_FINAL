@@ -1,9 +1,14 @@
 #include <SFML/Graphics.hpp>
 #include "Menu.h"
+#include "NivelMenu.h"
 
 int main() {
     sf::RenderWindow window(sf::VideoMode(1200, 720), "Pong++");
     Menu menu(window.getSize().x, window.getSize().y);
+    NivelMenu menuNiveles(window.getSize().x, window.getSize().y);
+
+    bool inMenu = true;
+    bool inNivelMenu = false;
 
     while (window.isOpen()) {
         sf::Event event;
@@ -14,26 +19,50 @@ int main() {
 
             if (event.type == sf::Event::KeyReleased) {
                 if (event.key.code == sf::Keyboard::Up) {
-                    menu.MoveUp();
+                    if (inMenu) {
+                        menu.MoveUp();
+                    }
+                    else if (inNivelMenu) {
+                        menuNiveles.MoveUp();
+                    }
                 }
                 if (event.key.code == sf::Keyboard::Down) {
-                    menu.MoveDown();
+                    if (inMenu) {
+                        menu.MoveDown();
+                    }
+                    else if (inNivelMenu) {
+                        menuNiveles.MoveDown();
+                    }
                 }
                 if (event.key.code == sf::Keyboard::Return) {
-                    int selectedOption = menu.getSelectedOption();
-                    if (selectedOption == 1) {
-                        
-                        
+                    if (inMenu) {
+                        int selectedOption = menu.getSelectedOption();
+                        if (selectedOption == 1) {
+                            inMenu = false;
+                            inNivelMenu = true;
+                        }
+                        else if (selectedOption == 2) {
+                            window.close();
+                        }
                     }
-                    else if (selectedOption == 2) {
-                        window.close(); // Salir del juego
+                    else if (inNivelMenu) {
+                        int selectedNivel = menuNiveles.getSelectedNivel();
+                        // Lógica para manejar la selección de niveles
+                        // Puedes cambiar las banderas para salir del bucle
                     }
                 }
             }
         }
 
         window.clear();
-        menu.draw(window);
+
+        if (inMenu) {
+            menu.draw(window);
+        }
+        else if (inNivelMenu) {
+            menuNiveles.draw(window);
+        }
+
         window.display();
     }
 
