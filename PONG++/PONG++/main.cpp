@@ -51,9 +51,15 @@ int main() {
                         }
                     }
                     else if (inNivelMenu) {
-                        int selectedNivel = menuNiveles.getSelectedNivel();
-                        // Lógica para manejar la selección de niveles
-                        // Puedes cambiar las banderas para salir del bucle
+                        if (menuNiveles.getSelectedNivel() == 3) {
+                            inMenu = true; // Cambia la bandera para volver al menú principal
+                            inNivelMenu = false; // Salir de la pantalla de selección de niveles
+                        }
+                        else {
+                            int selectedNivel = menuNiveles.getSelectedNivel();
+                            // Lógica para manejar la selección de niveles
+                            // Puedes cambiar las banderas para salir del bucle
+                        }
                     }
                 }
             }

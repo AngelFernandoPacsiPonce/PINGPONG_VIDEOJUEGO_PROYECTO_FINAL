@@ -12,11 +12,12 @@ public:
     void MoveUp();
     void MoveDown();
     int getSelectedNivel();
+    bool isBackSelected(); // Nuevo método para verificar la selección de retroceder
 
 private:
     int selectedNivelIndex;
     sf::Font font;
-    sf::Text nivelText[3];
+    sf::Text nivelText[4]; // Aumenta el tamaño del arreglo para incluir "RETROCEDER"
 };
 
 #endif // NIVELMENU_H

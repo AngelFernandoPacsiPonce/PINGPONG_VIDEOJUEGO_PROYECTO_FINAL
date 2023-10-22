@@ -23,27 +23,37 @@ NivelMenu::NivelMenu(float width, float height) {
     nivelText[2].setCharacterSize(40);
     nivelText[2].setPosition(sf::Vector2f(width / 2 - 40, height / 2 + 100));
 
+    nivelText[3].setFont(font);
+    nivelText[3].setFillColor(sf::Color::White);
+    nivelText[3].setString("RETROCEDER"); // Texto para retroceder
+    nivelText[3].setCharacterSize(30);
+    nivelText[3].setPosition(sf::Vector2f(width - 300, height - 100));
+
     selectedNivelIndex = 0; // Iniciar con el primer nivel seleccionado
 }
 
 void NivelMenu::draw(sf::RenderWindow& window) {
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 4; i++) { // Aumenta el tamaño del arreglo en el bucle
         window.draw(nivelText[i]);
     }
 }
 
 void NivelMenu::MoveUp() {
     nivelText[selectedNivelIndex].setFillColor(sf::Color::White);
-    selectedNivelIndex = (selectedNivelIndex - 1 + 3) % 3; // Para permitir ciclar hacia arriba
+    selectedNivelIndex = (selectedNivelIndex - 1 + 4) % 4; // Aumenta el módulo a 4
     nivelText[selectedNivelIndex].setFillColor(sf::Color::Cyan);
 }
 
 void NivelMenu::MoveDown() {
     nivelText[selectedNivelIndex].setFillColor(sf::Color::White);
-    selectedNivelIndex = (selectedNivelIndex + 1) % 3; // Para permitir ciclar hacia abajo
+    selectedNivelIndex = (selectedNivelIndex + 1) % 4; // Aumenta el módulo a 4
     nivelText[selectedNivelIndex].setFillColor(sf::Color::Cyan);
 }
 
 int NivelMenu::getSelectedNivel() {
     return selectedNivelIndex;
+}
+
+bool NivelMenu::isBackSelected() {
+    return selectedNivelIndex == 3; // Devuelve verdadero si "RETROCEDER" está seleccionado
 }
