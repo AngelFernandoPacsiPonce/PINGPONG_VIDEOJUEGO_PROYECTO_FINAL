@@ -1,12 +1,13 @@
 #include "NivelMenu.h"
+#include <iostream>
 
 NivelMenu::NivelMenu(float width, float height) {
     if (!font.loadFromFile("fuente.ttf")) {
-        // Manejo de errores si no se puede cargar la fuente.
+        std::cout << "No hay fuente :( " << std::endl;
     }
 
     nivelText[0].setFont(font);
-    nivelText[0].setFillColor(sf::Color::Red); // Cambiar el color inicial al primer nivel
+    nivelText[0].setFillColor(sf::Color::Red);
     nivelText[0].setString("NIVEL 1");
     nivelText[0].setCharacterSize(40);
     nivelText[0].setPosition(sf::Vector2f(width / 2 - 40, height / 3));
@@ -25,28 +26,28 @@ NivelMenu::NivelMenu(float width, float height) {
 
     nivelText[3].setFont(font);
     nivelText[3].setFillColor(sf::Color::White);
-    nivelText[3].setString("RETROCEDER"); // Texto para retroceder
+    nivelText[3].setString("RETROCEDER");
     nivelText[3].setCharacterSize(30);
     nivelText[3].setPosition(sf::Vector2f(width - 300, height - 100));
 
-    selectedNivelIndex = 0; // Iniciar con el primer nivel seleccionado
+    selectedNivelIndex = 0;
 }
 
 void NivelMenu::draw(sf::RenderWindow& window) {
-    for (int i = 0; i < 4; i++) { // Aumenta el tamaño del arreglo en el bucle
+    for (int i = 0; i < 4; i++) {
         window.draw(nivelText[i]);
     }
 }
 
 void NivelMenu::MoveUp() {
     nivelText[selectedNivelIndex].setFillColor(sf::Color::White);
-    selectedNivelIndex = (selectedNivelIndex - 1 + 4) % 4; // Aumenta el módulo a 4
+    selectedNivelIndex = (selectedNivelIndex - 1 + 4) % 4;
     nivelText[selectedNivelIndex].setFillColor(sf::Color::Cyan);
 }
 
 void NivelMenu::MoveDown() {
     nivelText[selectedNivelIndex].setFillColor(sf::Color::White);
-    selectedNivelIndex = (selectedNivelIndex + 1) % 4; // Aumenta el módulo a 4
+    selectedNivelIndex = (selectedNivelIndex + 1) % 4;
     nivelText[selectedNivelIndex].setFillColor(sf::Color::Cyan);
 }
 
@@ -55,5 +56,5 @@ int NivelMenu::getSelectedNivel() {
 }
 
 bool NivelMenu::isBackSelected() {
-    return selectedNivelIndex == 3; // Devuelve verdadero si "RETROCEDER" está seleccionado
+    return selectedNivelIndex == 3;
 }

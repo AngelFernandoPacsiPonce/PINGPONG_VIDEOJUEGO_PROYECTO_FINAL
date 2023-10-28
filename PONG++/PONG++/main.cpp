@@ -2,6 +2,7 @@
 #include "Menu.h"
 #include "NivelMenu.h"
 #include "Musica.h" // Incluye el archivo de cabecera de la clase Musica
+#include "Nivel1.h" // Incluye el archivo de cabecera del Nivel 1
 
 int main() {
     sf::RenderWindow window(sf::VideoMode(1200, 720), "Pong++");
@@ -39,14 +40,15 @@ int main() {
                         menuNiveles.MoveDown();
                     }
                 }
+                //ENTRAR A LA OTRA VENTANA (CAMBIO DE VENTANAS)
                 if (event.key.code == sf::Keyboard::Return) {
                     if (inMenu) {
                         int selectedOption = menu.getSelectedOption();
-                        if (selectedOption == 1) {
-                            inMenu = false;
-                            inNivelMenu = true;
+                        if (selectedOption == 1) {//JUGAR
+                            inMenu = false;//ELIMINA LA VENTANA
+                            inNivelMenu = true;// INGRESA A NUEVA VENTANA
                         }
-                        else if (selectedOption == 2) {
+                        else if (selectedOption == 2) {//SALIR
                             window.close();
                         }
                     }
@@ -57,14 +59,20 @@ int main() {
                         }
                         else {
                             int selectedNivel = menuNiveles.getSelectedNivel();
-                            // Lógica para manejar la selección de niveles
-                            // Puedes cambiar las banderas para salir del bucle
+                            if (selectedNivel == 0) { // NIVEL 1
+                                inNivelMenu = false; // Sal de la pantalla de selección de niveles
+                                // Crear e iniciar el Nivel 1
+                                Nivel1 nivel1(window.getSize().x, window.getSize().y);
+                                nivel1.run();
+                                inMenu = true; // Regresar al menú principal después de que el nivel termine
+                            }
+                            // Puedes agregar más lógica para otros niveles aquí
                         }
                     }
                 }
             }
         }
-
+        //DIBUJAR LAS VENTANAS
         window.clear();
 
         if (inMenu) {

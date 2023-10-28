@@ -6,7 +6,7 @@
 
 class NivelMenu {
 public:
-    NivelMenu(float width, float height);
+    NivelMenu(float width, float height);//POSICION
 
     void draw(sf::RenderWindow& window);
     void MoveUp();

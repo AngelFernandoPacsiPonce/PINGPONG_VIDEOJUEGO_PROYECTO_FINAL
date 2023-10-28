@@ -4,7 +4,7 @@ Menu::Menu(float width, float height) {
     if (!font.loadFromFile("fuente.ttf")) {
         // Manejo de errores si no se puede cargar la fuente.
     }
-
+     
     menuText[0].setFont(font);
     menuText[0].setFillColor(sf::Color::Red);
     menuText[0].setString("PONG I I ");
@@ -15,18 +15,22 @@ Menu::Menu(float width, float height) {
     menuText[1].setFillColor(sf::Color::Cyan);
     menuText[1].setString("JUGAR");
     menuText[1].setCharacterSize(40);
-    menuText[1].setPosition(sf::Vector2f(width / 2 - 40, height / 2 + 50));
+    menuText[1].setPosition(sf::Vector2f(width / 2 - 90, height / 2 + 50));
 
     menuText[2].setFont(font);
     menuText[2].setFillColor(sf::Color::White);
     menuText[2].setString("SALIR");
     menuText[2].setCharacterSize(40);
-    menuText[2].setPosition(sf::Vector2f(width / 2 - 40, height / 2 + 150));
+    menuText[2].setPosition(sf::Vector2f(width / 2 - 90, height / 2 + 150));
 
     selectedItemIndex = 1; // "JUGAR" seleccionado inicialmente
 }
 
+
+
+
 void Menu::draw(sf::RenderWindow& window) {
+    
     for (int i = 0; i < 3; i++) {
         window.draw(menuText[i]);
     }

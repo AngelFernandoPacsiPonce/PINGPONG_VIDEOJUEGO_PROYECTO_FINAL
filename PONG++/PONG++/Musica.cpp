@@ -1,7 +1,7 @@
 #include "Musica.h"
 
 Musica::Musica() {
-    // Constructor, puedes agregar configuraciones iniciales aquí si es necesario.
+    // Constructor
 }
 
 void Musica::cargarMusica() {
@@ -9,7 +9,7 @@ void Musica::cargarMusica() {
         // Manejo de errores si no se puede cargar la música.
     }
 }
-
+//futuras funciones para configurar musica del juego. =) ;-;
 void Musica::reproducir() {
     music.play();
 }

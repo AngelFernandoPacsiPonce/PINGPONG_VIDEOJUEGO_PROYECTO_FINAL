@@ -1,2 +1,33 @@
-﻿  NivelMenu.cpp
+﻿  Menu.cpp
+  Musica.cpp
+  Nivel1.cpp
+  NivelMenu.cpp
+  Paleta.cpp
+C:\PONG++\PONG++\PONG++\Paleta.cpp(10,17): warning C4305: '-=': truncamiento de 'double' a 'float'
+C:\PONG++\PONG++\PONG++\Paleta.cpp(17,17): warning C4305: '+=': truncamiento de 'double' a 'float'
+  Pelota.cpp
+C:\PONG++\PONG++\PONG++\Pelota.cpp(10,12): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\PONG++\PONG++\PONG++\Pelota.cpp(11,12): warning C4305: '=': truncamiento de 'double' a 'float'
+  main.cpp
+C:\PONG++\PONG++\PONG++\main.cpp(9,51): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+          with
+          [
+              T=unsigned int
+          ]
+C:\PONG++\PONG++\PONG++\main.cpp(9,31): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+          with
+          [
+              T=unsigned int
+          ]
+C:\PONG++\PONG++\PONG++\main.cpp(10,63): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+          with
+          [
+              T=unsigned int
+          ]
+C:\PONG++\PONG++\PONG++\main.cpp(10,43): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+          with
+          [
+              T=unsigned int
+          ]
+  Generando código...
   PONG++.vcxproj -> C:\PONG++\PONG++\x64\Debug\PONG++.exe

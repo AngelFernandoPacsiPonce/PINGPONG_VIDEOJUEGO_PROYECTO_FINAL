@@ -21,13 +21,19 @@
   <ItemGroup>
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Musica.h" />
+    <ClInclude Include="Nivel1.h" />
     <ClInclude Include="NivelMenu.h" />
+    <ClInclude Include="Paleta.h" />
+    <ClInclude Include="Pelota.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Musica.cpp" />
+    <ClCompile Include="Nivel1.cpp" />
     <ClCompile Include="NivelMenu.cpp" />
+    <ClCompile Include="Paleta.cpp" />
+    <ClCompile Include="Pelota.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
