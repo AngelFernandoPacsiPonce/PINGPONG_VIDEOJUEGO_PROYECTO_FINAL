@@ -4,7 +4,15 @@ Menu::Menu(float width, float height) {
     if (!font.loadFromFile("fuente.ttf")) {
         // Manejo de errores si no se puede cargar la fuente.
     }
-     
+
+    // Carga la textura y configura el sprite del fondo
+    if (!fondoTexture.loadFromFile("fondomenuprincipal.png")) {
+        // Manejo de errores si no se puede cargar la textura del fondo.
+    }
+
+    fondoSprite.setTexture(fondoTexture);
+    fondoSprite.setScale(width / fondoSprite.getGlobalBounds().width, height / fondoSprite.getGlobalBounds().height);
+
     menuText[0].setFont(font);
     menuText[0].setFillColor(sf::Color::Red);
     menuText[0].setString("PONG I I ");
@@ -26,11 +34,10 @@ Menu::Menu(float width, float height) {
     selectedItemIndex = 1; // "JUGAR" seleccionado inicialmente
 }
 
-
-
-
 void Menu::draw(sf::RenderWindow& window) {
-    
+    // Dibuja el fondo antes de los elementos de texto
+    window.draw(fondoSprite);
+
     for (int i = 0; i < 3; i++) {
         window.draw(menuText[i]);
     }

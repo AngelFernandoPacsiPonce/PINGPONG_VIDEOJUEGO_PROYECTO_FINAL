@@ -6,6 +6,14 @@ NivelMenu::NivelMenu(float width, float height) {
         std::cout << "No hay fuente :( " << std::endl;
     }
 
+    // Carga la textura y configura el sprite del fondo
+    if (!fondoTexture.loadFromFile("fondomenuseleccion.png")) {
+        // Manejo de errores si no se puede cargar la textura del fondo.
+    }
+
+    fondoSprite.setTexture(fondoTexture);
+    fondoSprite.setScale(width / fondoSprite.getGlobalBounds().width, height / fondoSprite.getGlobalBounds().height);
+
     nivelText[0].setFont(font);
     nivelText[0].setFillColor(sf::Color::Red);
     nivelText[0].setString("NIVEL 1");
@@ -34,6 +42,9 @@ NivelMenu::NivelMenu(float width, float height) {
 }
 
 void NivelMenu::draw(sf::RenderWindow& window) {
+    // Dibuja el fondo antes de los elementos de texto
+    window.draw(fondoSprite);
+
     for (int i = 0; i < 4; i++) {
         window.draw(nivelText[i]);
     }

@@ -6,7 +6,7 @@
 
 class NivelMenu {
 public:
-    NivelMenu(float width, float height);//POSICION
+    NivelMenu(float width, float height);
 
     void draw(sf::RenderWindow& window);
     void MoveUp();
@@ -18,6 +18,8 @@ private:
     int selectedNivelIndex;
     sf::Font font;
     sf::Text nivelText[4]; // Aumenta el tamaño del arreglo para incluir "RETROCEDER"
+    sf::Texture fondoTexture; // Nueva textura para el fondo
+    sf::Sprite fondoSprite;   // Nuevo sprite para el fondo
 };
 
-#endif // NIVELMENU_H
+#endif
