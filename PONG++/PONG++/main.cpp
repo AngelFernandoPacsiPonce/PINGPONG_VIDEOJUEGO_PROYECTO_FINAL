@@ -5,11 +5,15 @@
 #include "Nivel1.h" // Incluye el archivo de cabecera del Nivel 1
 
 int main() {
+    // Crea una ventana de SFML
     sf::RenderWindow window(sf::VideoMode(1200, 720), "Pong++");
+
+    // Crea instancias de las clases Menu y NivelMenu
     Menu menu(window.getSize().x, window.getSize().y);
     NivelMenu menuNiveles(window.getSize().x, window.getSize().y);
 
-    Musica musica; // Crea una instancia de la clase Musica
+    // Crea una instancia de la clase Musica
+    Musica musica;
     musica.cargarMusica(); // Carga la música desde "musicamenu.mp3"
     musica.reproducir(); // Reproduce la música
 
@@ -20,51 +24,51 @@ int main() {
         sf::Event event;
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
-                window.close();
+                window.close(); // Cierra la ventana cuando se hace clic en el botón de cerrar
             }
 
             if (event.type == sf::Event::KeyReleased) {
                 if (event.key.code == sf::Keyboard::Up) {
                     if (inMenu) {
-                        menu.MoveUp();
+                        menu.MoveUp(); // Mueve la selección hacia arriba en el menú principal
                     }
                     else if (inNivelMenu) {
-                        menuNiveles.MoveUp();
+                        menuNiveles.MoveUp(); // Mueve la selección hacia arriba en el menú de niveles
                     }
                 }
                 if (event.key.code == sf::Keyboard::Down) {
                     if (inMenu) {
-                        menu.MoveDown();
+                        menu.MoveDown(); // Mueve la selección hacia abajo en el menú principal
                     }
                     else if (inNivelMenu) {
-                        menuNiveles.MoveDown();
+                        menuNiveles.MoveDown(); // Mueve la selección hacia abajo en el menú de niveles
                     }
                 }
-                //ENTRAR A LA OTRA VENTANA (CAMBIO DE VENTANAS)
+                // Cambia entre el menú principal y el menú de niveles o inicia el juego
                 if (event.key.code == sf::Keyboard::Return) {
                     if (inMenu) {
                         int selectedOption = menu.getSelectedOption();
                         if (selectedOption == 1) {//JUGAR
-                            inMenu = false;//ELIMINA LA VENTANA
-                            inNivelMenu = true;// INGRESA A NUEVA VENTANA
+                            inMenu = false; // Elimina la ventana del menú principal
+                            inNivelMenu = true; // Ingresa a la nueva ventana del menú de niveles
                         }
                         else if (selectedOption == 2) {//SALIR
-                            window.close();
+                            window.close(); // Cierra la ventana y termina el juego
                         }
                     }
                     else if (inNivelMenu) {
                         if (menuNiveles.getSelectedNivel() == 3) {
                             inMenu = true; // Cambia la bandera para volver al menú principal
-                            inNivelMenu = false; // Salir de la pantalla de selección de niveles
+                            inNivelMenu = false; // Sale de la pantalla de selección de niveles
                         }
                         else {
                             int selectedNivel = menuNiveles.getSelectedNivel();
                             if (selectedNivel == 0) { // NIVEL 1
-                                inNivelMenu = false; // Sal de la pantalla de selección de niveles
-                                // Crear e iniciar el Nivel 1
+                                inNivelMenu = false; // Sale de la pantalla de selección de niveles
+                                // Crea e inicia el Nivel 1
                                 Nivel1 nivel1(window.getSize().x, window.getSize().y);
                                 nivel1.run();
-                                inMenu = true; // Regresar al menú principal después de que el nivel termine
+                                inMenu = true; // Regresa al menú principal después de que el nivel termine
                             }
                             // Puedes agregar más lógica para otros niveles aquí
                         }
@@ -72,17 +76,18 @@ int main() {
                 }
             }
         }
-        //DIBUJAR LAS VENTANAS
+
+        // Dibuja las ventanas en la pantalla
         window.clear();
 
         if (inMenu) {
-            menu.draw(window);
+            menu.draw(window); // Dibuja el menú principal
         }
         else if (inNivelMenu) {
-            menuNiveles.draw(window);
+            menuNiveles.draw(window); // Dibuja el menú de selección de niveles
         }
 
-        window.display();
+        window.display(); // Actualiza la pantalla
     }
 
     return 0;

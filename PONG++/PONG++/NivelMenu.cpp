@@ -3,6 +3,7 @@
 
 NivelMenu::NivelMenu(float width, float height) {
     if (!font.loadFromFile("fuente.ttf")) {
+        // Comprueba si se pudo cargar la fuente, y muestra un mensaje en caso contrario
         std::cout << "No hay fuente :( " << std::endl;
     }
 
@@ -38,7 +39,7 @@ NivelMenu::NivelMenu(float width, float height) {
     nivelText[3].setCharacterSize(30);
     nivelText[3].setPosition(sf::Vector2f(width - 300, height - 100));
 
-    selectedNivelIndex = 0;
+    selectedNivelIndex = 0; // "NIVEL 1" seleccionado inicialmente
 }
 
 void NivelMenu::draw(sf::RenderWindow& window) {

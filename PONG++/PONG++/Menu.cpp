@@ -3,11 +3,13 @@
 Menu::Menu(float width, float height) {
     if (!font.loadFromFile("fuente.ttf")) {
         // Manejo de errores si no se puede cargar la fuente.
+        // Puedes agregar aquí un mensaje de error o acciones específicas en caso de falla.
     }
 
     // Carga la textura y configura el sprite del fondo
     if (!fondoTexture.loadFromFile("fondomenuprincipal.png")) {
         // Manejo de errores si no se puede cargar la textura del fondo.
+        // Puedes agregar aquí un mensaje de error o acciones específicas en caso de falla.
     }
 
     fondoSprite.setTexture(fondoTexture);
