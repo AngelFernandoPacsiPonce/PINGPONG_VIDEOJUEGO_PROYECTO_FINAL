@@ -6,16 +6,19 @@
 
 class Musica {
 public:
-    Musica(); // Constructor de la clase Musica
+    Musica();
 
-    void cargarMusica(); // Método para cargar la música desde el archivo "musicamenu.mp3"
-    void reproducir(); // Método para reproducir la música
-    void detener(); // Método para detener la reproducción de música
-    void pausar(); // Método para pausar la música
-    void reanudar(); // Método para reanudar la reproducción de música
+    void cargarMusicaMenu();
+    void cargarMusicaNivel1();
+    void reproducirMenu();
+    void reproducirNivel1();
+    void detener();
+    void pausar();
+    void reanudar();
 
 private:
-    sf::Music music; // Objeto de la clase sf::Music para gestionar la música
+    sf::Music music;
+    bool reproduciendo;
 };
 
 #endif // MUSICA_H

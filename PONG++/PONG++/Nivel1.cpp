@@ -1,10 +1,17 @@
+// Nivel1.cpp
 #include "Nivel1.h"
+#include "Musica.h"
 
-Nivel1::Nivel1(sf::RenderWindow& mainWindow) : window(mainWindow), paleta1(30, 250), paleta2(750, 250), pelota(400, 300, "pelota1.png") {
+Nivel1::Nivel1(sf::RenderWindow& mainWindow, Musica& music)
+    : window(mainWindow), paleta1(30, 250), paleta2(750, 250), pelota(400, 300, "pelota1.png"), musica(music) // Inicializar musica
+{
     // Constructor de la clase Nivel1
     // Inicializa las paletas y la pelota
 
     // Aquí puedes agregar la carga de texturas si es necesario
+
+    musica.cargarMusicaNivel1();  // Cargar la música del nivel 1
+    musica.reproducirNivel1();  // Reproducir la música del nivel 1
 }
 
 void Nivel1::run() {

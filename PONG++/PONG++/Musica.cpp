@@ -4,18 +4,35 @@ Musica::Musica() {
     // Constructor
 }
 
-void Musica::cargarMusica() {
+void Musica::cargarMusicaMenu() {
     if (!music.openFromFile("musicamenu.mp3")) {
         // Manejo de errores si no se puede cargar la música.
     }
 }
-//futuras funciones para configurar musica del juego. =) ;-;
-void Musica::reproducir() {
-    music.play();
+
+void Musica::cargarMusicaNivel1() {
+    if (!music.openFromFile("musicanivel1.mp3")) {
+        // Manejo de errores si no se puede cargar la música.
+    }
+}
+
+void Musica::reproducirMenu() {
+    if (music.openFromFile("musicamenu.mp3")) {
+        music.play();
+        reproduciendo = true;
+    }
+}
+
+void Musica::reproducirNivel1() {
+    if (music.openFromFile("musicanivel1.mp3")) {
+        music.play();
+        reproduciendo = true;
+    }
 }
 
 void Musica::detener() {
     music.stop();
+    reproduciendo = false;
 }
 
 void Musica::pausar() {
@@ -24,4 +41,5 @@ void Musica::pausar() {
 
 void Musica::reanudar() {
     music.play();
+    reproduciendo = true;
 }

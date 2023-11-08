@@ -1,94 +1,103 @@
-#include <SFML/Graphics.hpp>
-#include "Menu.h"
-#include "NivelMenu.h"
-#include "Musica.h" // Incluye el archivo de cabecera de la clase Musica
-#include "Nivel1.h" // Incluye el archivo de cabecera del Nivel 1
+#include <SFML/Graphics.hpp>  
+#include "Menu.h"             
+#include "NivelMenu.h"      
+#include "Musica.h"          
+#include "Nivel1.h"          
 
 int main() {
-    // Crea una ventana de SFML
-    sf::RenderWindow window(sf::VideoMode(1200, 720), "Pong++");
+    sf::RenderWindow window(sf::VideoMode(1200, 720), "Pong++");  // Crea una ventana de juego
 
-    // Crea instancias de las clases Menu y NivelMenu
-    Menu menu(window.getSize().x, window.getSize().y);
-    NivelMenu menuNiveles(window.getSize().x, window.getSize().y);
+    Menu menu(window.getSize().x, window.getSize().y);           // Crea una instancia de la clase Menu
+    NivelMenu menuNiveles(window.getSize().x, window.getSize().y);  // Crea una instancia de la clase NivelMenu
 
-    // Crea una instancia de la clase Musica
-    Musica musica;
-    musica.cargarMusica(); // Carga la música desde "musicamenu.mp3"
-    musica.reproducir(); // Reproduce la música
+    Musica musica;              // Crea una instancia de la clase Musica
+    musica.cargarMusicaMenu();  // Carga la música del menú
+    musica.reproducirMenu();    // Reproduce la música del menú
 
-    bool inMenu = true;
-    bool inNivelMenu = false;
+    bool inMenu = true;           // Bandera para controlar si estamos en el menú
+    bool inNivelMenu = false;     // Bandera para controlar si estamos en el menú de selección de niveles
+    bool musicPlaying = true;     // Bandera para controlar si la música está sonando
 
-    while (window.isOpen()) {
-        sf::Event event;
-        while (window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed) {
-                window.close(); // Cierra la ventana cuando se hace clic en el botón de cerrar
+    Nivel1 nivel1(window, musica);  // Crea una instancia de la clase Nivel1 pasando la ventana y la música
+
+    while (window.isOpen()) {  // Comienza un bucle principal que se ejecuta mientras la ventana está abierta
+        sf::Event event;        // Crea una instancia de sf::Event para manejar eventos
+        while (window.pollEvent(event)) {  // Procesa eventos
+            if (event.type == sf::Event::Closed) {  // Si se cierra la ventana, se sale del bucle
+                window.close();
             }
 
-            if (event.type == sf::Event::KeyReleased) {
+            if (event.type == sf::Event::KeyReleased) {  // Si se libera una tecla
                 if (event.key.code == sf::Keyboard::Up) {
                     if (inMenu) {
-                        menu.MoveUp(); // Mueve la selección hacia arriba en el menú principal
+                        menu.MoveUp();  // Mueve la selección hacia arriba en el menú
                     }
                     else if (inNivelMenu) {
-                        menuNiveles.MoveUp(); // Mueve la selección hacia arriba en el menú de niveles
+                        menuNiveles.MoveUp();  // Mueve la selección hacia arriba en el menú de selección de niveles
                     }
                 }
                 if (event.key.code == sf::Keyboard::Down) {
                     if (inMenu) {
-                        menu.MoveDown(); // Mueve la selección hacia abajo en el menú principal
+                        menu.MoveDown();  // Mueve la selección hacia abajo en el menú
                     }
                     else if (inNivelMenu) {
-                        menuNiveles.MoveDown(); // Mueve la selección hacia abajo en el menú de niveles
+                        menuNiveles.MoveDown();  // Mueve la selección hacia abajo en el menú de selección de niveles
                     }
                 }
-                // Cambia entre el menú principal y el menú de niveles o inicia el juego
-                if (event.key.code == sf::Keyboard::Return) {
+                if (event.key.code == sf::Keyboard::Return) {  // Si se presiona la tecla "Enter"
                     if (inMenu) {
                         int selectedOption = menu.getSelectedOption();
-                        if (selectedOption == 1) {//JUGAR
-                            inMenu = false; // Elimina la ventana del menú principal
-                            inNivelMenu = true; // Ingresa a la nueva ventana del menú de niveles
+                        if (selectedOption == 1) {
+                            inMenu = false;      // Sale del menú y va al menú de selección de niveles
+                            inNivelMenu = true;
                         }
-                        else if (selectedOption == 2) {//SALIR
-                            window.close(); // Cierra la ventana y termina el juego
+                        else if (selectedOption == 2) {
+                            window.close();      // Cierra la ventana
                         }
                     }
                     else if (inNivelMenu) {
                         if (menuNiveles.getSelectedNivel() == 3) {
-                            inMenu = true; // Cambia la bandera para volver al menú principal
-                            inNivelMenu = false; // Sale de la pantalla de selección de niveles
+                            inMenu = true;        // Regresa al menú principal
+                            inNivelMenu = false;
+
+                            // Detiene la música al regresar al menú
+                            if (musicPlaying) {
+                                musica.detener();
+                                musicPlaying = false;
+                            }
                         }
                         else {
                             int selectedNivel = menuNiveles.getSelectedNivel();
-                            if (selectedNivel == 0) { // NIVEL 1
-                                inNivelMenu = false; // Sale de la pantalla de selección de niveles
-                                // Crea e inicia el Nivel 1, pasando la referencia de la ventana principal
-                                Nivel1 nivel1(window); // Aquí utilizas el constructor correcto
+                            if (selectedNivel == 0) {
+                                inNivelMenu = false;  // Sale del menú de selección de niveles
+
+                                if (!musicPlaying) {
+                                    musica.cargarMusicaNivel1();
+                                    musica.reproducirNivel1();
+                                    musicPlaying = true;
+                                }
+
+                                Nivel1 nivel1(window, musica);  // Crea una nueva instancia de Nivel1
                                 nivel1.run();
-                                inMenu = true; // Regresa al menú principal después de que el nivel termine
+                                inMenu = true;  // Regresa al menú principal
                             }
-                            // Puedes agregar más lógica para otros niveles aquí
                         }
                     }
                 }
             }
         }
 
-        // Dibuja las ventanas en la pantalla
-        window.clear();
+        window.clear();  // Borra el contenido de la ventana
 
         if (inMenu) {
-            menu.draw(window); // Dibuja el menú principal
+            menu.draw(window);  // Dibuja el menú en la ventana
         }
         else if (inNivelMenu) {
-            menuNiveles.draw(window); // Dibuja el menú de selección de niveles
+            menuNiveles.draw(window);  // Dibuja el menú de selección de niveles en la ventana
         }
 
-        window.display(); // Actualiza la pantalla
+        window.display();  // Actualiza la ventana para mostrar los cambios
     }
 
-    return 0;
+    return 0;  // Retorna 0 para indicar que el programa se ejecutó con éxito
 }

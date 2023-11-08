@@ -7,7 +7,7 @@ Menu::Menu(float width, float height) {
     }
 
     // Carga la textura y configura el sprite del fondo
-    if (!fondoTexture.loadFromFile("fondomenuprincipal.png")) {
+    if (!fondoTexture.loadFromFile("fondomenuprincipal.jpg")) {
         // Manejo de errores si no se puede cargar la textura del fondo.
         // Puedes agregar aquí un mensaje de error o acciones específicas en caso de falla.
     }
@@ -16,8 +16,8 @@ Menu::Menu(float width, float height) {
     fondoSprite.setScale(width / fondoSprite.getGlobalBounds().width, height / fondoSprite.getGlobalBounds().height);
 
     menuText[0].setFont(font);
-    menuText[0].setFillColor(sf::Color::Red);
-    menuText[0].setString("PONG I I ");
+    menuText[0].setFillColor(sf::Color::Yellow);
+    menuText[0].setString("PONG T T");
     menuText[0].setCharacterSize(80);
     menuText[0].setPosition(sf::Vector2f(width / 2 - 200, height / 3 - 50));
 
