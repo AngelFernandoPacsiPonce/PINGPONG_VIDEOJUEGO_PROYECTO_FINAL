@@ -65,8 +65,8 @@ int main() {
                             int selectedNivel = menuNiveles.getSelectedNivel();
                             if (selectedNivel == 0) { // NIVEL 1
                                 inNivelMenu = false; // Sale de la pantalla de selección de niveles
-                                // Crea e inicia el Nivel 1
-                                Nivel1 nivel1(window.getSize().x, window.getSize().y);
+                                // Crea e inicia el Nivel 1, pasando la referencia de la ventana principal
+                                Nivel1 nivel1(window); // Aquí utilizas el constructor correcto
                                 nivel1.run();
                                 inMenu = true; // Regresa al menú principal después de que el nivel termine
                             }

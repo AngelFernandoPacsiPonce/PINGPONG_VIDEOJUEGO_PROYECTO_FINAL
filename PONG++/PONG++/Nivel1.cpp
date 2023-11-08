@@ -1,8 +1,8 @@
 #include "Nivel1.h"
 
-Nivel1::Nivel1(int windowWidth, int windowHeight) : window(sf::VideoMode(windowWidth, windowHeight), "PONG C++"), paleta1(30, 250), paleta2(750, 250), pelota(400, 300, "pelota1.png") {
+Nivel1::Nivel1(sf::RenderWindow& mainWindow) : window(mainWindow), paleta1(30, 250), paleta2(750, 250), pelota(400, 300, "pelota1.png") {
     // Constructor de la clase Nivel1
-    // Inicializa la ventana, paletas y pelota
+    // Inicializa las paletas y la pelota
 
     // Aquí puedes agregar la carga de texturas si es necesario
 }
