@@ -1,5 +1,7 @@
+// Nivel1.cpp
 #include "Nivel1.h"
 #include "Musica.h"
+#include "Pausa.h"
 
 Nivel1::Nivel1(sf::RenderWindow& mainWindow, Musica& music)
     : window(mainWindow), paleta1(30, 250), paleta2(1150, 250), pelota(400, 300, "pelota1.png"), musica(music)
@@ -9,51 +11,88 @@ Nivel1::Nivel1(sf::RenderWindow& mainWindow, Musica& music)
 }
 
 void Nivel1::run() {
+    Pausa pausa(window); // Crea una instancia de la clase Pausa
+    bool pausado = false;
+
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed)
                 window.close();
+
+            // Manejo de eventos para pausar y reanudar el juego
+            if (event.type == sf::Event::KeyReleased) {
+                if (event.key.code == sf::Keyboard::Space) {
+                    pausado = !pausado;
+
+                    // Si el juego se pausa, muestra la pantalla de pausa
+                    if (pausado) {
+                        int resultado = pausa.mostrar();
+
+                        // Maneja el resultado según la elección del jugador
+                        if (resultado == 0) {
+                            // Reanudar el juego
+                            pausado = false;
+                        }
+                        else if (resultado == 1) {
+                            // Salir al Menú
+                            if (pausa.shouldReturnToMenu()) {
+                                // Detener la música del nivel1 antes de salir
+                                musica.detener();
+                                return; // Regresar al menú principal
+                            }
+                            window.close();
+                        }
+                    }
+                }
+            }
         }
 
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-            paleta1.moveUp();
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-            paleta1.moveDown(window.getSize().y);
-        }
+        if (!pausado) {
+            // Lógica del juego cuando no está pausado
 
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-            paleta2.moveUp();
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
-            paleta2.moveDown(window.getSize().y);
-        }
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
+                paleta1.moveUp();
+            }
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
+                paleta1.moveDown(window.getSize().y);
+            }
 
-        pelota.updatePosition();
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+                paleta2.moveUp();
+            }
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+                paleta2.moveDown(window.getSize().y);
+            }
 
-        // Obtén el radio de la pelota
-        float radioPelota = pelota.getRadio();
+            pelota.updatePosition();
 
-        // Colisión de la pelota con las paletas
-        if (pelota.getSprite().getGlobalBounds().intersects(paleta1.getShape().getGlobalBounds()) ||
-            pelota.getSprite().getGlobalBounds().intersects(paleta2.getShape().getGlobalBounds())) {
-            pelota.reverseX();
-        }
+            // Obtén el radio de la pelota
+            float radioPelota = pelota.getRadio();
 
-        // Colisión de la pelota con los bordes de la ventana
-        if (pelota.getSprite().getPosition().x <= 0 || pelota.getSprite().getPosition().x >= window.getSize().x - 2 * radioPelota) {
-            pelota.reverseX();
-        }
+            // Colisión de la pelota con las paletas
+            if (pelota.getSprite().getGlobalBounds().intersects(paleta1.getShape().getGlobalBounds()) ||
+                pelota.getSprite().getGlobalBounds().intersects(paleta2.getShape().getGlobalBounds())) {
+                pelota.reverseX();
+            }
 
-        if (pelota.getSprite().getPosition().y <= 0 || pelota.getSprite().getPosition().y >= window.getSize().y - 2 * radioPelota) {
-            pelota.reverseY();
+            // Colisión de la pelota con los bordes de la ventana
+            if (pelota.getSprite().getPosition().x <= 0 || pelota.getSprite().getPosition().x >= window.getSize().x - 2 * radioPelota) {
+                pelota.reverseX();
+            }
+
+            if (pelota.getSprite().getPosition().y <= 0 || pelota.getSprite().getPosition().y >= window.getSize().y - 2 * radioPelota) {
+                pelota.reverseY();
+            }
         }
 
         window.clear();
         window.draw(paleta1.getShape());
         window.draw(paleta2.getShape());
         window.draw(pelota.getSprite());
+
         window.display();
     }
+    // Asegúrate de detener la música del nivel1 antes de salir de la función
+    musica.detener();
 }
