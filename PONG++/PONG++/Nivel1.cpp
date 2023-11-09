@@ -1,26 +1,17 @@
-// Nivel1.cpp
 #include "Nivel1.h"
 #include "Musica.h"
 
 Nivel1::Nivel1(sf::RenderWindow& mainWindow, Musica& music)
-    : window(mainWindow), paleta1(30,250), paleta2(1150, 250), pelota(400, 300, "pelota1.png"), musica(music) // Inicializar musica
+    : window(mainWindow), paleta1(30, 250), paleta2(1150, 250), pelota(400, 300, "pelota1.png"), musica(music)
 {
-    // Constructor de la clase Nivel1
-    // Inicializa las paletas y la pelota
-
-    // Aquí puedes agregar la carga de texturas si es necesario
-
-    musica.cargarMusicaNivel1();  // Cargar la música del nivel 1
-    musica.reproducirNivel1();  // Reproducir la música del nivel 1
+    musica.cargarMusicaNivel1();
+    musica.reproducirNivel1();
 }
 
 void Nivel1::run() {
-    // Método para ejecutar el nivel
-
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {
-            // Manejo de eventos de la ventana
             if (event.type == sf::Event::Closed)
                 window.close();
         }
@@ -41,8 +32,8 @@ void Nivel1::run() {
 
         pelota.updatePosition();
 
-        // Calcular el radio de la pelota en función de la textura
-        float radioPelota = static_cast<float>(pelota.getSprite().getTexture()->getSize().x) / 2.0f;
+        // Obtén el radio de la pelota
+        float radioPelota = pelota.getRadio();
 
         // Colisión de la pelota con las paletas
         if (pelota.getSprite().getGlobalBounds().intersects(paleta1.getShape().getGlobalBounds()) ||

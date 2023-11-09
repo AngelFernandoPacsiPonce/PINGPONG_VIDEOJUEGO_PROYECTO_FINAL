@@ -1,31 +1,35 @@
 #include "Pelota.h"
 
-Pelota::Pelota(float startX, float startY, const std::string& texturaFile) : x(startX), y(startY) {
+Pelota::Pelota(float startX, float startY, const std::string& texturaFile) : x(startX), y(startY), radio(120.0f) {
     if (!textura.loadFromFile("pelota1.png")) {
-      
+        
     }
 
-    pelota.setTexture(textura); 
-    pelota.setPosition(x, y); // Establece la posición inicial de la pelota
-    velX = 0.2;
-    velY = 0.2;
-    radio = 10.0f; // Define el radio de la pelota
+    pelota.setTexture(textura);
+    pelota.setScale(radio / pelota.getLocalBounds().width, radio / pelota.getLocalBounds().height); // Ajuste de escala
+    pelota.setPosition(x - radio, y - radio); // Ajuste de posición
+    velX = 0.3;
+    velY = 0.3;
 }
 
 void Pelota::updatePosition() {
     x += velX;
     y += velY;
-    pelota.setPosition(x, y); // Actualiza la posición de la pelota
+    pelota.setPosition(x, y);
 }
 
 void Pelota::reverseX() {
-    velX = -velX; // Invierte la dirección en el eje X
+    velX = -velX;
 }
 
 void Pelota::reverseY() {
-    velY = -velY; // Invierte la dirección en el eje Y
+    velY = -velY;
 }
 
 sf::Sprite Pelota::getSprite() {
-    return pelota; // Devuelve el sprite de la pelota
+    return pelota;
+}
+
+float Pelota::getRadio() {
+    return radio;
 }

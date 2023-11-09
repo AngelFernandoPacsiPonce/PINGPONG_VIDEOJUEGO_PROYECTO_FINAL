@@ -1,4 +1,3 @@
-// Nivel1.h
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "Paleta.h"
@@ -7,7 +6,7 @@
 
 class Nivel1 {
 public:
-    Nivel1(sf::RenderWindow& mainWindow, Musica& music); // Agregar Musica como argumento
+    Nivel1(sf::RenderWindow& mainWindow, Musica& music);
     void run();
 
 private:
@@ -15,5 +14,5 @@ private:
     Paleta paleta1;
     Paleta paleta2;
     Pelota pelota;
-    Musica& musica; // Mantener una referencia a Musica
+    Musica& musica;
 };
