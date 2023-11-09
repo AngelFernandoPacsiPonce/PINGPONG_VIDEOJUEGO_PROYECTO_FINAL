@@ -1,66 +1,64 @@
-#include <SFML/Graphics.hpp>  
-#include "Menu.h"             
-#include "NivelMenu.h"      
-#include "Musica.h"          
-#include "Nivel1.h"          
+#include <SFML/Graphics.hpp>
+#include "Menu.h"
+#include "NivelMenu.h"
+#include "Musica.h"
+#include "Nivel1.h"
 
 int main() {
-    sf::RenderWindow window(sf::VideoMode(1200, 720), "Pong++");  // Crea una ventana de juego
+    int alto = 1200;
+    int ancho = 720;
+    sf::RenderWindow window(sf::VideoMode(alto, ancho), "Pong++");
 
-    Menu menu(window.getSize().x, window.getSize().y);           // Crea una instancia de la clase Menu
-    NivelMenu menuNiveles(window.getSize().x, window.getSize().y);  // Crea una instancia de la clase NivelMenu
+    Menu menu(window.getSize().x, window.getSize().y);
+    NivelMenu menuNiveles(window.getSize().x, window.getSize().y);
 
-    Musica musica;              // Crea una instancia de la clase Musica
-    musica.cargarMusicaMenu();  // Carga la música del menú
-    musica.reproducirMenu();    // Reproduce la música del menú
+    Musica musica;
+    bool inMenu = true;
+    bool inNivelMenu = false;
+    bool musicPlaying = false;  // Inicializa en false
 
-    bool inMenu = true;           // Bandera para controlar si estamos en el menú
-    bool inNivelMenu = false;     // Bandera para controlar si estamos en el menú de selección de niveles
-    bool musicPlaying = true;     // Bandera para controlar si la música está sonando
+    Nivel1 nivel1(window, musica);
 
-    Nivel1 nivel1(window, musica);  // Crea una instancia de la clase Nivel1 pasando la ventana y la música
-
-    while (window.isOpen()) {  // Comienza un bucle principal que se ejecuta mientras la ventana está abierta
-        sf::Event event;        // Crea una instancia de sf::Event para manejar eventos
-        while (window.pollEvent(event)) {  // Procesa eventos
-            if (event.type == sf::Event::Closed) {  // Si se cierra la ventana, se sale del bucle
+    while (window.isOpen()) {
+        sf::Event event;
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
                 window.close();
             }
 
-            if (event.type == sf::Event::KeyReleased) {  // Si se libera una tecla
+            if (event.type == sf::Event::KeyReleased) {
                 if (event.key.code == sf::Keyboard::Up) {
                     if (inMenu) {
-                        menu.MoveUp();  // Mueve la selección hacia arriba en el menú
+                        menu.MoveUp();
                     }
                     else if (inNivelMenu) {
-                        menuNiveles.MoveUp();  // Mueve la selección hacia arriba en el menú de selección de niveles
+                        menuNiveles.MoveUp();
                     }
                 }
                 if (event.key.code == sf::Keyboard::Down) {
                     if (inMenu) {
-                        menu.MoveDown();  // Mueve la selección hacia abajo en el menú
+                        menu.MoveDown();
                     }
                     else if (inNivelMenu) {
-                        menuNiveles.MoveDown();  // Mueve la selección hacia abajo en el menú de selección de niveles
+                        menuNiveles.MoveDown();
                     }
                 }
-                if (event.key.code == sf::Keyboard::Return) {  // Si se presiona la tecla "Enter"
+                if (event.key.code == sf::Keyboard::Return) {
                     if (inMenu) {
                         int selectedOption = menu.getSelectedOption();
                         if (selectedOption == 1) {
-                            inMenu = false;      // Sale del menú y va al menú de selección de niveles
+                            inMenu = false;
                             inNivelMenu = true;
                         }
                         else if (selectedOption == 2) {
-                            window.close();      // Cierra la ventana
+                            window.close();
                         }
                     }
                     else if (inNivelMenu) {
                         if (menuNiveles.getSelectedNivel() == 3) {
-                            inMenu = true;        // Regresa al menú principal
+                            inMenu = true;
                             inNivelMenu = false;
 
-                            // Detiene la música al regresar al menú
                             if (musicPlaying) {
                                 musica.detener();
                                 musicPlaying = false;
@@ -69,17 +67,18 @@ int main() {
                         else {
                             int selectedNivel = menuNiveles.getSelectedNivel();
                             if (selectedNivel == 0) {
-                                inNivelMenu = false;  // Sale del menú de selección de niveles
+                                inNivelMenu = false;
 
                                 if (!musicPlaying) {
+                                    musica.detener();  // Detiene la música del menú si estabas en el menú antes de ir al menú de selección de niveles
                                     musica.cargarMusicaNivel1();
                                     musica.reproducirNivel1();
                                     musicPlaying = true;
                                 }
 
-                                Nivel1 nivel1(window, musica);  // Crea una nueva instancia de Nivel1
+                                Nivel1 nivel1(window, musica);
                                 nivel1.run();
-                                inMenu = true;  // Regresa al menú principal
+                                inMenu = true;
                             }
                         }
                     }
@@ -87,17 +86,27 @@ int main() {
             }
         }
 
-        window.clear();  // Borra el contenido de la ventana
+        window.clear();
 
         if (inMenu) {
-            menu.draw(window);  // Dibuja el menú en la ventana
+            if (!musicPlaying) {
+                musica.reproducirMenu();
+                musicPlaying = true;
+            }
+            menu.draw(window);
         }
         else if (inNivelMenu) {
-            menuNiveles.draw(window);  // Dibuja el menú de selección de niveles en la ventana
+            if (!musicPlaying) {
+                musica.detener();
+                musica.cargarMusicaNivel1();
+                musica.reproducirNivel1();
+                musicPlaying = true;
+            }
+            menuNiveles.draw(window);
         }
 
-        window.display();  // Actualiza la ventana para mostrar los cambios
+        window.display();
     }
 
-    return 0;  // Retorna 0 para indicar que el programa se ejecutó con éxito
+    return 0;
 }

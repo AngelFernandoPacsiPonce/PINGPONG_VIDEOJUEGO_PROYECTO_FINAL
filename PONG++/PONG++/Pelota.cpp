@@ -2,10 +2,10 @@
 
 Pelota::Pelota(float startX, float startY, const std::string& texturaFile) : x(startX), y(startY) {
     if (!textura.loadFromFile("pelota1.png")) {
-        // Manejo de error en caso de que no se pueda cargar la textura.
+      
     }
 
-    pelota.setTexture(textura); // Configura la textura de la pelota
+    pelota.setTexture(textura); 
     pelota.setPosition(x, y); // Establece la posición inicial de la pelota
     velX = 0.2;
     velY = 0.2;

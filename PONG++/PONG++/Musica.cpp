@@ -24,10 +24,14 @@ void Musica::reproducirMenu() {
 }
 
 void Musica::reproducirNivel1() {
-    if (music.openFromFile("musicanivel1.mp3")) {
-        music.play();
-        reproduciendo = true;
+    if (!reproduciendo) {
+        detener(); // Detener la música del menú antes de reproducir la del nivel 1
+        if (!music.openFromFile("musicanivel1.mp3")) {
+            // Manejo de errores si no se puede cargar la música.
+        }
     }
+    music.play();
+    reproduciendo = true;
 }
 
 void Musica::detener() {

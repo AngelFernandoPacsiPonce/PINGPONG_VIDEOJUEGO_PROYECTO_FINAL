@@ -3,7 +3,7 @@
 #include "Musica.h"
 
 Nivel1::Nivel1(sf::RenderWindow& mainWindow, Musica& music)
-    : window(mainWindow), paleta1(30, 250), paleta2(750, 250), pelota(400, 300, "pelota1.png"), musica(music) // Inicializar musica
+    : window(mainWindow), paleta1(30,250), paleta2(1150, 250), pelota(400, 300, "pelota1.png"), musica(music) // Inicializar musica
 {
     // Constructor de la clase Nivel1
     // Inicializa las paletas y la pelota
@@ -25,17 +25,17 @@ void Nivel1::run() {
                 window.close();
         }
 
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
             paleta1.moveUp();
         }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
             paleta1.moveDown(window.getSize().y);
         }
 
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
             paleta2.moveUp();
         }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
             paleta2.moveDown(window.getSize().y);
         }
 

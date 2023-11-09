@@ -1,24 +1,22 @@
-﻿  Menu.cpp
-  main.cpp
-C:\PONG++\PONG++\PONG++\main.cpp(10,51): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+﻿  main.cpp
+C:\PONG++\PONG++\PONG++\main.cpp(12,51): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
           with
           [
               T=unsigned int
           ]
-C:\PONG++\PONG++\PONG++\main.cpp(10,31): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+C:\PONG++\PONG++\PONG++\main.cpp(12,31): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
           with
           [
               T=unsigned int
           ]
-C:\PONG++\PONG++\PONG++\main.cpp(11,63): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+C:\PONG++\PONG++\PONG++\main.cpp(13,63): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
           with
           [
               T=unsigned int
           ]
-C:\PONG++\PONG++\PONG++\main.cpp(11,43): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+C:\PONG++\PONG++\PONG++\main.cpp(13,43): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
           with
           [
               T=unsigned int
           ]
-  Generando código...
   PONG++.vcxproj -> C:\PONG++\PONG++\x64\Debug\PONG++.exe
