@@ -1,4 +1,7 @@
 ﻿  Nivel1.cpp
+  Paleta.cpp
+C:\PONG++\PONG++\PONG++\Paleta.cpp(11,17): warning C4305: '-=': truncamiento de 'double' a 'float'
+C:\PONG++\PONG++\PONG++\Paleta.cpp(18,17): warning C4305: '+=': truncamiento de 'double' a 'float'
   Pausa.cpp
 C:\PONG++\PONG++\PONG++\Pausa.cpp(15,81): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
           with

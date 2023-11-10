@@ -1,15 +1,17 @@
+// Paleta.h
 #pragma once
 #include <SFML/Graphics.hpp>
 
 class Paleta {
 public:
-    Paleta(float startX, float startY); // Constructor de la clase Paleta
-    void moveUp(); // Método para mover la paleta hacia arriba
-    void moveDown(int windowHeight); // Método para mover la paleta hacia abajo
-    void setTexture(const sf::Texture& texture); // Método para establecer una textura en la paleta
-    sf::RectangleShape getShape(); // Método para obtener la forma de la paleta
+    Paleta(float startX, float startY);
+    void moveUp();
+    void moveDown(int windowHeight);
+    void setTexture(const std::string& texturePath);
+    sf::RectangleShape getShape();
 
 private:
-    float x, y; // Posición de la paleta
-    sf::RectangleShape paleta; // Forma rectangular que representa la paleta
+    float x, y;
+    sf::RectangleShape paleta;
+    sf::Texture textura; // Nueva variable para almacenar la textura
 };

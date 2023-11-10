@@ -6,6 +6,9 @@
 Nivel1::Nivel1(sf::RenderWindow& mainWindow, Musica& music)
     : window(mainWindow), paleta1(30, 250), paleta2(1150, 250), pelota(400, 300, "pelota1.png"), musica(music)
 {
+    paleta1.setTexture("paletita1.png");
+    paleta2.setTexture("paletita2.png");
+
     musica.cargarMusicaNivel1();
     musica.reproducirNivel1();
 }

@@ -1,28 +1,32 @@
+// Paleta.cpp
 #include "Paleta.h"
-
+#include <iostream>
 Paleta::Paleta(float startX, float startY) : x(startX), y(startY) {
-    paleta.setSize(sf::Vector2f(20, 100)); // Configura el tamaño de la paleta
-    paleta.setPosition(x, y); // Establece la posición inicial de la paleta
+    paleta.setSize(sf::Vector2f(20, 100));
+    paleta.setPosition(x, y);
 }
 
 void Paleta::moveUp() {
     if (y > 0) {
-        y -= 0.7; // Disminuye la posición en el eje Y para mover la paleta hacia arriba
-        paleta.setPosition(x, y); // Actualiza la posición de la paleta
+        y -= 0.7;
+        paleta.setPosition(x, y);
     }
 }
 
 void Paleta::moveDown(int windowHeight) {
     if (y < windowHeight - paleta.getSize().y) {
-        y += 0.7; // Aumenta la posición en el eje Y para mover la paleta hacia abajo
-        paleta.setPosition(x, y); // Actualiza la posición de la paleta
+        y += 0.7;
+        paleta.setPosition(x, y);
     }
 }
 
-void Paleta::setTexture(const sf::Texture& texture) {
-    paleta.setTexture(&texture); // Asigna una textura a la paleta
+void Paleta::setTexture(const std::string& texturePath) {
+    if (!textura.loadFromFile(texturePath)) {
+        std::cerr << "Error: No se pudo cargar la textura para la paleta." << std::endl;
+    }
+    paleta.setTexture(&textura);
 }
 
 sf::RectangleShape Paleta::getShape() {
-    return paleta; // Devuelve la forma de la paleta (rectángulo)
+    return paleta;
 }
