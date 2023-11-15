@@ -1,7 +1,11 @@
 #include "NivelMenu.h"
+#include "pantalla.h"
 #include <iostream>
+#pragma once
+NivelMenu::NivelMenu(float width, float height)
+    : Pantalla(window) {
 
-NivelMenu::NivelMenu(float width, float height) {
+    selectedNivelIndex = 0;
     if (!font.loadFromFile("fuente.ttf")) {
        
         std::cout << "No hay fuente :( " << std::endl;

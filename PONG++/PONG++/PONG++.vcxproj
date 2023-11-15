@@ -24,6 +24,7 @@
     <ClInclude Include="Nivel1.h" />
     <ClInclude Include="NivelMenu.h" />
     <ClInclude Include="Paleta.h" />
+    <ClInclude Include="Pantalla.h" />
     <ClInclude Include="Pausa.h" />
     <ClInclude Include="Pelota.h" />
   </ItemGroup>
@@ -34,6 +35,7 @@
     <ClCompile Include="Nivel1.cpp" />
     <ClCompile Include="NivelMenu.cpp" />
     <ClCompile Include="Paleta.cpp" />
+    <ClCompile Include="Pantalla.cpp" />
     <ClCompile Include="Pausa.cpp" />
     <ClCompile Include="Pelota.cpp" />
   </ItemGroup>

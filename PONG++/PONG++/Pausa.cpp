@@ -1,9 +1,10 @@
 // Pausa.cpp
 #include "Pausa.h"
+#include "pantalla.h"
+#pragma once
 
 Pausa::Pausa(sf::RenderWindow& mainWindow)
-    : window(mainWindow), selectedItemIndex(0), returnToMenu(false)
-{
+    : Pantalla(mainWindow), selectedItemIndex(0), returnToMenu(false) {
     if (!font.loadFromFile("fuente.ttf")) {
         // Manejo de errores si no se puede cargar la fuente.
     }
@@ -12,17 +13,20 @@ Pausa::Pausa(sf::RenderWindow& mainWindow)
     textoPausa.setCharacterSize(50);
     textoPausa.setString("PAUSA");
     textoPausa.setFillColor(sf::Color::Yellow);
-    textoPausa.setPosition(window.getSize().x / 2 - 120, window.getSize().y / 2 - 100);
+    reanudarTexto.setPosition(static_cast<float>(Pantalla::window.getSize().x) / 2 - 100.0f, static_cast<float>(Pantalla::window.getSize().y) / 2.0f);
+    salirTexto.setPosition(static_cast<float>(Pantalla::window.getSize().x) / 2 - 100.0f, static_cast<float>(Pantalla::window.getSize().y) / 2.0f + 50.0f);
 
-    reanudarTexto.setFont(font);
     reanudarTexto.setCharacterSize(20);
     reanudarTexto.setString("Reanudar");
-    reanudarTexto.setPosition(window.getSize().x / 2 - 100, window.getSize().y / 2);
-
-    salirTexto.setFont(font);
+    reanudarTexto.setPosition(static_cast<float>(Pantalla::window.getSize().x) / 2 - 100, static_cast<float>(Pantalla::window.getSize().y) / 2);
+    
+    salirTexto.setPosition(static_cast<float>(Pantalla::window.getSize().x) / 2 - 100, static_cast<float>(Pantalla::window.getSize().y) / 2 + 50);
     salirTexto.setCharacterSize(20);
     salirTexto.setString("Salir");
-    salirTexto.setPosition(window.getSize().x / 2 - 100, window.getSize().y / 2 + 50);
+    salirTexto.setPosition(static_cast<float>(Pantalla::window.getSize().x) / 2.0f - 100.0f, static_cast<float>(Pantalla::window.getSize().y) / 2.0f + 50.0f);
+
+   
+
 }
 
 int Pausa::mostrar() {

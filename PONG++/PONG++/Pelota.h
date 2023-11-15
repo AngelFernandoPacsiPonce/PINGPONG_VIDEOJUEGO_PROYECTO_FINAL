@@ -7,8 +7,10 @@ public:
     void updatePosition();
     void reverseX();
     void reverseY();
+    //double setposition(int x,int y);
     sf::Sprite getSprite();
-    float getRadio(); // Agrega este método
+    float getRadio(); 
+    // Agrega este método
 
 private:
     float x, y;
