@@ -36,3 +36,8 @@ sf::Sprite Pelota::getSprite() {
 float Pelota::getRadio() {
     return radio;
 }
+void Pelota::setposition(float x, float y) {
+    this->x = x;
+    this->y = y;
+    pelota.setPosition(x - radio - 2, y - radio - 2);
+}

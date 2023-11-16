@@ -27,6 +27,7 @@
     <ClInclude Include="Pantalla.h" />
     <ClInclude Include="Pausa.h" />
     <ClInclude Include="Pelota.h" />
+    <ClInclude Include="Puntaje.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -38,6 +39,7 @@
     <ClCompile Include="Pantalla.cpp" />
     <ClCompile Include="Pausa.cpp" />
     <ClCompile Include="Pelota.cpp" />
+    <ClCompile Include="Puntaje.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

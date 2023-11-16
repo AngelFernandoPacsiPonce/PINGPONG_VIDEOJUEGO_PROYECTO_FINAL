@@ -11,6 +11,7 @@ public:
     sf::Sprite getSprite();
     float getRadio(); 
     // Agrega este método
+    void setposition(float x, float y);
 
 private:
     float x, y;
