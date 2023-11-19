@@ -1,36 +1,31 @@
 #include "Puntaje.h"
 
-Puntaje::Puntaje(float x, float y, const std::string& fuentePath) : puntaje(0) {
-    if (!fuente.loadFromFile(fuentePath)) {
-        // Manejo de error si la carga de la fuente falla
+Puntaje::Puntaje(float x, float y, const std::string& fontPath)
+    : puntaje(0) {
+    if (!font.loadFromFile(fontPath)) {
+        // Manejo de errores si no se puede cargar la fuente.
     }
 
-    textoPuntaje.setFont(fuente);
-    textoPuntaje.setCharacterSize(40);
-    textoPuntaje.setFillColor(sf::Color::White);
-    textoPuntaje.setPosition(x, y);
-
-    actualizarTexto();
+    texto.setFont(font);
+    texto.setCharacterSize(40);
+    texto.setPosition(x, y);
+    texto.setFillColor(sf::Color::White);
 }
 
 void Puntaje::aumentarPuntaje() {
     puntaje++;
-    actualizarTexto();
+    texto.setString(std::to_string(puntaje));
 }
 
-void Puntaje::reiniciarPuntaje() {
-    puntaje = 0;
-    actualizarTexto();
-}
-
-void Puntaje::actualizarTexto() {
-    textoPuntaje.setString("PUNTOS: " + std::to_string(puntaje));
-}
-
-sf::Text Puntaje::getTexto() {
-    return textoPuntaje;
-}
-
-unsigned int Puntaje::getPuntaje() {
+int Puntaje::getPuntaje() {
     return puntaje;
+}
+
+void Puntaje::resetearPuntaje() {
+    puntaje = 0;
+    texto.setString("0");
+}
+
+sf::Text& Puntaje::getTexto() {
+    return texto;
 }

@@ -17,9 +17,9 @@ Menu::Menu(float width, float height) {
 
     menuText[0].setFont(font);
     menuText[0].setFillColor(sf::Color::Yellow);
-    menuText[0].setString("PONG T T");
-    menuText[0].setCharacterSize(80);
-    menuText[0].setPosition(sf::Vector2f(width / 2 - 200, height / 3 - 50));
+    menuText[0].setString("PONG + +");
+    menuText[0].setCharacterSize(110);
+    menuText[0].setPosition(sf::Vector2f(width / 2 - 250, height / 3 - 50));
 
     menuText[1].setFont(font);
     menuText[1].setFillColor(sf::Color::Cyan);

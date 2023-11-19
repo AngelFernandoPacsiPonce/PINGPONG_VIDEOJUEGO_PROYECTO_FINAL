@@ -1,14 +1,23 @@
-﻿  Nivel1.cpp
-C:\PONG++\PONG++\PONG++\Nivel1.cpp(13,28): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\PONG++\PONG++\PONG++\Nivel1.cpp(13,17): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\PONG++\PONG++\PONG++\Nivel1.cpp(104,52): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\PONG++\PONG++\PONG++\Nivel1.cpp(104,42): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\PONG++\PONG++\PONG++\Nivel1.cpp(106,52): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\PONG++\PONG++\PONG++\Nivel1.cpp(106,42): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+﻿  Ganador.cpp
+  Menu.cpp
+  Musica.cpp
+  Nivel1.cpp
+C:\PONG++\PONG++\PONG++\Nivel1.cpp(12,28): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\PONG++\PONG++\PONG++\Nivel1.cpp(12,17): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\PONG++\PONG++\PONG++\Nivel1.cpp(116,56): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\PONG++\PONG++\PONG++\Nivel1.cpp(116,46): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\PONG++\PONG++\PONG++\Nivel1.cpp(120,52): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\PONG++\PONG++\PONG++\Nivel1.cpp(120,42): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\PONG++\PONG++\PONG++\Nivel1.cpp(122,52): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\PONG++\PONG++\PONG++\Nivel1.cpp(122,42): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+  NivelMenu.cpp
   Paleta.cpp
+  Pantalla.cpp
+  Pausa.cpp
   Pelota.cpp
 C:\PONG++\PONG++\PONG++\Pelota.cpp(11,12): warning C4305: '=': truncamiento de 'double' a 'float'
 C:\PONG++\PONG++\PONG++\Pelota.cpp(12,12): warning C4305: '=': truncamiento de 'double' a 'float'
+  Puntaje.cpp
   main.cpp
 C:\PONG++\PONG++\PONG++\main.cpp(12,51): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
           with

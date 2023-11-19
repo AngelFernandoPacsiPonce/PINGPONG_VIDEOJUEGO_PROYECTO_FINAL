@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Ganador.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Musica.h" />
     <ClInclude Include="Nivel1.h" />
@@ -30,6 +31,7 @@
     <ClInclude Include="Puntaje.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Ganador.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Musica.cpp" />

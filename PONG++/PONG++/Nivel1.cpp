@@ -1,4 +1,3 @@
-// Nivel1.cpp
 #include "Nivel1.h"
 #include "Musica.h"
 #include "Pausa.h"
@@ -12,11 +11,16 @@ Nivel1::Nivel1(sf::RenderWindow& mainWindow, Musica& music)
     paleta2(1150, 250),
     pelota(alto / 2, ancho / 2, "pelota1.png"),
     musica(music),
-    puntaje1(60, 20, "fuente.ttf"),  // Ajusta la posición y el nombre del archivo de fuente según tus necesidades
-    puntaje2(900, 20, "fuente.ttf")  // Ajusta la posición y el nombre del archivo de fuente según tus necesidades
+    puntaje1(60, 20, "fuente.ttf"),
+    puntaje2(900, 20, "fuente.ttf"),
+    ganador(mainWindow, 0) // El segundo parámetro es el jugador ganador, inicializado en 0
 {
     paleta1.setTexture("paletita1.png");
     paleta2.setTexture("paletita2.png");
+
+    // Llama a la función resetearPuntaje al inicio del juego
+    puntaje1.resetearPuntaje();
+    puntaje2.resetearPuntaje();
 
     musica.cargarMusicaNivel1();
     musica.reproducirNivel1();
@@ -98,6 +102,18 @@ void Nivel1::run() {
                 // Incrementa el puntaje del jugador 1 si toca la pared derecha
                 if (pelota.getSprite().getPosition().x >= window.getSize().x - radioPelota) {
                     puntaje1.aumentarPuntaje();
+                }
+
+                // Verifica si hay un ganador
+                if (puntaje1.getPuntaje() >= 15 || puntaje2.getPuntaje() >= 15) {
+                    int ganadorNum = (puntaje1.getPuntaje() >= 15) ? 1 : 2;
+                    Ganador ganador(window, ganadorNum);
+                    ganador.mostrar(); // Muestra la pantalla de ganador
+
+                    // Restablece los puntajes y posición de la pelota
+                    puntaje1.resetearPuntaje();
+                    puntaje2.resetearPuntaje();
+                    pelota.setPosition(ancho / 2, alto / 2);
                 }
 
                 pelota.reverseX();

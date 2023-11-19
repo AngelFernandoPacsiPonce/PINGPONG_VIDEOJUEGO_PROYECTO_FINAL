@@ -3,18 +3,15 @@
 
 class Puntaje {
 public:
-    Puntaje(float x, float y, const std::string& fuentePath);
+    Puntaje(float x, float y, const std::string& fontPath);
     void aumentarPuntaje();
-    void reiniciarPuntaje();
-    void actualizarTexto();
+    int getPuntaje();
+    void resetearPuntaje();  // Agrega esta función
 
-    sf::Text getTexto();
-    unsigned int getPuntaje();
+    sf::Text& getTexto(); // Cambia el retorno de la función
 
 private:
-    unsigned int puntaje;
-    sf::Font fuente;
-    sf::Text textoPuntaje;
+    int puntaje;
+    sf::Font font;
+    sf::Text texto;
 };
-
-

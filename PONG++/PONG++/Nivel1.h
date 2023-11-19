@@ -4,6 +4,7 @@
 #include "Pelota.h"
 #include "Musica.h"
 #include "Puntaje.h"
+#include "Ganador.h"
 
 class Nivel1 {
 public:
@@ -18,4 +19,5 @@ private:
     Musica& musica;
     Puntaje puntaje1;
     Puntaje puntaje2;
+    Ganador ganador;
 };
