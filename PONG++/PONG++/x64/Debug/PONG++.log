@@ -1,8 +1,8 @@
 ﻿  Nivel1.cpp
-C:\PONG++\PONG++\PONG++\Nivel1.cpp(11,88): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\PONG++\PONG++\PONG++\Nivel1.cpp(11,77): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\PONG++\PONG++\PONG++\Nivel1.cpp(89,52): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\PONG++\PONG++\PONG++\Nivel1.cpp(89,42): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\PONG++\PONG++\PONG++\Nivel1.cpp(93,52): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\PONG++\PONG++\PONG++\Nivel1.cpp(93,42): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\PONG++\PONG++\PONG++\Nivel1.cpp(10,88): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\PONG++\PONG++\PONG++\Nivel1.cpp(10,77): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\PONG++\PONG++\PONG++\Nivel1.cpp(88,52): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\PONG++\PONG++\PONG++\Nivel1.cpp(88,42): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\PONG++\PONG++\PONG++\Nivel1.cpp(90,52): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\PONG++\PONG++\PONG++\Nivel1.cpp(90,42): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
   PONG++.vcxproj -> C:\PONG++\PONG++\x64\Debug\PONG++.exe
