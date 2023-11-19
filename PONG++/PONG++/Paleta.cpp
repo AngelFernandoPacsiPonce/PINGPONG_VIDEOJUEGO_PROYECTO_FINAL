@@ -3,19 +3,19 @@
 #include <iostream>
 Paleta::Paleta(float startX, float startY) : x(startX), y(startY) {
     paleta.setSize(sf::Vector2f(20, 100));
-    paleta.setPosition(x, y);
+    paleta.setPosition(x - paleta.getSize().x, y); // Ajusta la posición inicial de la paleta izquierda
 }
 
 void Paleta::moveUp() {
     if (y > 0) {
-        y -= 0.7;
+        y -= 0.5;
         paleta.setPosition(x, y);
     }
 }
 
 void Paleta::moveDown(int windowHeight) {
     if (y < windowHeight - paleta.getSize().y) {
-        y += 0.7;
+        y += 0.5;
         paleta.setPosition(x, y);
     }
 }

@@ -7,7 +7,13 @@ int alto = 1200;
 int ancho = 720;
 
 Nivel1::Nivel1(sf::RenderWindow& mainWindow, Musica& music)
-    : window(mainWindow), paleta1(30, 250), paleta2(1150, 250), pelota(alto / 2, ancho / 2, "pelota1.png"), musica(music)
+    : window(mainWindow),
+    paleta1(30, 250),
+    paleta2(1150, 250),
+    pelota(alto / 2, ancho / 2, "pelota1.png"),
+    musica(music),
+    puntaje1(60, 20, "fuente.ttf"),  // Ajusta la posición y el nombre del archivo de fuente según tus necesidades
+    puntaje2(900, 20, "fuente.ttf")  // Ajusta la posición y el nombre del archivo de fuente según tus necesidades
 {
     paleta1.setTexture("paletita1.png");
     paleta2.setTexture("paletita2.png");
@@ -84,6 +90,16 @@ void Nivel1::run() {
 
             // Colisión de la pelota con los bordes de la ventana
             if (pelota.getSprite().getPosition().x <= 0 || pelota.getSprite().getPosition().x >= window.getSize().x - radioPelota) {
+                // Incrementa el puntaje del jugador 2 si toca la pared izquierda
+                if (pelota.getSprite().getPosition().x <= 0) {
+                    puntaje2.aumentarPuntaje();
+                }
+
+                // Incrementa el puntaje del jugador 1 si toca la pared derecha
+                if (pelota.getSprite().getPosition().x >= window.getSize().x - radioPelota) {
+                    puntaje1.aumentarPuntaje();
+                }
+
                 pelota.reverseX();
                 pelota.setPosition(ancho / 2, alto / 2);  // Reposiciona en el centro horizontalmente
                 pelota.reverseY();
@@ -100,8 +116,12 @@ void Nivel1::run() {
         window.draw(paleta2.getShape());
         window.draw(pelota.getSprite());
 
+        // Dibuja los puntajes
+        window.draw(puntaje1.getTexto());
+        window.draw(puntaje2.getTexto());
+
         window.display();
     }
-    //  detener la música del nivel1 antes de salir de la función
+    // detener la música del nivel1 antes de salir de la función
     musica.detener();
 }
