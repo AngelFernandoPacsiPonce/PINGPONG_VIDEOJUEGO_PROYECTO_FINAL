@@ -1,7 +1,7 @@
 #include "Nivel1.h"
 #include "Musica.h"
 #include "Pausa.h"
-
+#include <iostream>
 int alto = 1200;
 int ancho = 720;
 
@@ -13,8 +13,19 @@ Nivel1::Nivel1(sf::RenderWindow& mainWindow, Musica& music)
     musica(music),
     puntaje1(60, 20, "fuentenivel1.ttf"),
     puntaje2(900, 20, "fuentenivel1.ttf"),
-    ganador(mainWindow, 0) // El segundo parámetro es el jugador ganador, inicializado en 0
+    ganador(mainWindow, 0), // El segundo parámetro es el jugador ganador, inicializado en 0
+    fondoTexture(),  // Textura para el fondo
+    fondoSprite()    // Sprite para el fondo
 {
+    // Carga la textura del fondo desde el archivo JPG
+    if (!fondoTexture.loadFromFile("fondonivel1.jpg")) {
+        // Manejo de errores si no se puede cargar la textura del fondo
+        std::cerr << "Error al cargar la textura del fondo." << std::endl;
+    }
+
+    // Asigna la textura al sprite del fondo
+    fondoSprite.setTexture(fondoTexture);
+
     paleta1.setTexture("paletita1.png");
     paleta2.setTexture("paletita2.png");
 
@@ -143,6 +154,10 @@ void Nivel1::run() {
         }
 
         window.clear();
+
+        // Dibuja el fondo
+        window.draw(fondoSprite);
+
         window.draw(paleta1.getShape());
         window.draw(paleta2.getShape());
         window.draw(pelota.getSprite());
@@ -153,6 +168,7 @@ void Nivel1::run() {
 
         window.display();
     }
+
     // detener la música del nivel1 antes de salir de la función
     musica.detener();
 }

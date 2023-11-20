@@ -20,4 +20,7 @@ private:
     Puntaje puntaje1;
     Puntaje puntaje2;
     Ganador ganador;
+
+    sf::Texture fondoTexture;  // Textura para el fondo
+    sf::Sprite fondoSprite;    // Sprite para el fondo
 };
