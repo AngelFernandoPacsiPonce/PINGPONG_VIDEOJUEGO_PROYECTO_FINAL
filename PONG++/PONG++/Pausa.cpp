@@ -13,21 +13,17 @@ Pausa::Pausa(sf::RenderWindow& mainWindow)
     textoPausa.setCharacterSize(50);
     textoPausa.setString("PAUSA");
     textoPausa.setFillColor(sf::Color::Yellow);
-    reanudarTexto.setPosition(static_cast<float>(Pantalla::window.getSize().x) / 2 - 100.0f, static_cast<float>(Pantalla::window.getSize().y) / 2.0f);
-    salirTexto.setPosition(static_cast<float>(Pantalla::window.getSize().x) / 2 - 100.0f, static_cast<float>(Pantalla::window.getSize().y) / 2.0f + 50.0f);
 
-    reanudarTexto.setCharacterSize(20);
+    // Ajuste de las posiciones y tamaños de los textos
+    reanudarTexto.setCharacterSize(30);
     reanudarTexto.setString("Reanudar");
-    reanudarTexto.setPosition(static_cast<float>(Pantalla::window.getSize().x) / 2 - 100, static_cast<float>(Pantalla::window.getSize().y) / 2);
-    
-    salirTexto.setPosition(static_cast<float>(Pantalla::window.getSize().x) / 2 - 100, static_cast<float>(Pantalla::window.getSize().y) / 2 + 50);
-    salirTexto.setCharacterSize(20);
+    reanudarTexto.setPosition(static_cast<float>(Pantalla::window.getSize().x) / 2 - 80, static_cast<float>(Pantalla::window.getSize().y) / 2 - 20);
+
+    salirTexto.setCharacterSize(30);
     salirTexto.setString("Salir");
-    salirTexto.setPosition(static_cast<float>(Pantalla::window.getSize().x) / 2.0f - 100.0f, static_cast<float>(Pantalla::window.getSize().y) / 2.0f + 50.0f);
-
-   
-
+    salirTexto.setPosition(static_cast<float>(Pantalla::window.getSize().x) / 2 - 50, static_cast<float>(Pantalla::window.getSize().y) / 2 + 20);
 }
+
 
 int Pausa::mostrar() {
     selectedItemIndex = 0; // Reiniciamos la selección al mostrar la pantalla de pausa

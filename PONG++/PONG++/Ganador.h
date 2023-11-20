@@ -4,11 +4,11 @@
 
 class Ganador : public Pantalla {
 public:
-    Ganador(sf::RenderWindow& mainWindow, int ganador); // Constructor
-    int mostrar(); // Método para mostrar la pantalla de ganador
-    virtual void MoveUp() override; // Método para mover la selección hacia arriba
-    virtual void MoveDown() override; // Método para mover la selección hacia abajo
-    int getSelectedOption(); // Método para obtener la opción seleccionada
+    Ganador(sf::RenderWindow& mainWindow, int ganador);
+    int mostrar();
+    virtual void MoveUp() override;
+    virtual void MoveDown() override;
+    int getSelectedOption();
 
 private:
     int selectedItemIndex;
@@ -16,4 +16,8 @@ private:
     sf::Text reiniciarTexto;
     sf::Text siguienteNivelTexto;
     sf::Text salirTexto;
+
+    void Reiniciar();
+    void SiguienteNivel();
+    void Salir();
 };

@@ -3,7 +3,7 @@
 
 Ganador::Ganador(sf::RenderWindow& mainWindow, int ganador)
     : Pantalla(mainWindow), selectedItemIndex(0) {
-    if (!font.loadFromFile("fuente.ttf")) {
+    if (!font.loadFromFile("fuentenivel1.ttf")) {
         // Manejo de errores si no se puede cargar la fuente.
     }
 
@@ -12,9 +12,9 @@ Ganador::Ganador(sf::RenderWindow& mainWindow, int ganador)
     textoGanador.setString("GANADOR: JUGADOR " + std::to_string(ganador));
     textoGanador.setFillColor(sf::Color::Yellow);
 
-    reiniciarTexto.setPosition(static_cast<float>(Pantalla::window.getSize().x) / 2 - 100.0f, static_cast<float>(Pantalla::window.getSize().y) / 2.0f);
-    siguienteNivelTexto.setPosition(static_cast<float>(Pantalla::window.getSize().x) / 2 - 100.0f, static_cast<float>(Pantalla::window.getSize().y) / 2.0f + 50.0f);
-    salirTexto.setPosition(static_cast<float>(Pantalla::window.getSize().x) / 2 - 100.0f, static_cast<float>(Pantalla::window.getSize().y) / 2.0f + 100.0f);
+    reiniciarTexto.setPosition(static_cast<float>(Pantalla::window.getSize().x) / 2 - 100.0f, static_cast<float>(Pantalla::window.getSize().y) / 2.0f - 25.0f);
+    siguienteNivelTexto.setPosition(static_cast<float>(Pantalla::window.getSize().x) / 2 - 100.0f, static_cast<float>(Pantalla::window.getSize().y) / 2.0f + 25.0f);
+    salirTexto.setPosition(static_cast<float>(Pantalla::window.getSize().x) / 2 - 100.0f, static_cast<float>(Pantalla::window.getSize().y) / 2.0f + 75.0f);
 
     reiniciarTexto.setCharacterSize(20);
     reiniciarTexto.setString("Reiniciar Partida");
@@ -27,7 +27,7 @@ Ganador::Ganador(sf::RenderWindow& mainWindow, int ganador)
 }
 
 int Ganador::mostrar() {
-    selectedItemIndex = 0; // Reiniciamos la selección al mostrar la pantalla de ganador
+    selectedItemIndex = 0;
 
     while (true) {
         window.clear();
@@ -96,4 +96,16 @@ void Ganador::MoveDown() {
 
 int Ganador::getSelectedOption() {
     return selectedItemIndex;
+}
+
+void Ganador::Reiniciar() {
+    // Lógica para reiniciar el juego
+}
+
+void Ganador::SiguienteNivel() {
+    // Lógica para pasar al siguiente nivel
+}
+
+void Ganador::Salir() {
+    // Lógica para salir al menú principal
 }

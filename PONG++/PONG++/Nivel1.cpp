@@ -11,8 +11,8 @@ Nivel1::Nivel1(sf::RenderWindow& mainWindow, Musica& music)
     paleta2(1150, 250),
     pelota(alto / 2, ancho / 2, "pelota1.png"),
     musica(music),
-    puntaje1(60, 20, "fuente.ttf"),
-    puntaje2(900, 20, "fuente.ttf"),
+    puntaje1(60, 20, "fuentenivel1.ttf"),
+    puntaje2(900, 20, "fuentenivel1.ttf"),
     ganador(mainWindow, 0) // El segundo parámetro es el jugador ganador, inicializado en 0
 {
     paleta1.setTexture("paletita1.png");
@@ -105,15 +105,30 @@ void Nivel1::run() {
                 }
 
                 // Verifica si hay un ganador
-                if (puntaje1.getPuntaje() >= 15 || puntaje2.getPuntaje() >= 15) {
-                    int ganadorNum = (puntaje1.getPuntaje() >= 15) ? 1 : 2;
+                if (puntaje1.getPuntaje() >= 2 || puntaje2.getPuntaje() >= 2) {
+                    int ganadorNum = (puntaje1.getPuntaje() >= 2) ? 1 : 2;
                     Ganador ganador(window, ganadorNum);
-                    ganador.mostrar(); // Muestra la pantalla de ganador
+                    int opcion = ganador.mostrar(); // Muestra la pantalla de ganador
 
-                    // Restablece los puntajes y posición de la pelota
-                    puntaje1.resetearPuntaje();
-                    puntaje2.resetearPuntaje();
-                    pelota.setPosition(ancho / 2, alto / 2);
+                    // Maneja la opción seleccionada
+                    if (opcion == 0) {
+                        // Reiniciar el juego
+                        puntaje1.resetearPuntaje();
+                        puntaje2.resetearPuntaje();
+                        pelota.setPosition(ancho / 2, alto / 2);
+                    }
+                    else if (opcion == 1) {
+                        // Pasar al siguiente nivel
+                        // Lógica para pasar al siguiente nivel
+                        // ...
+                    }
+                    else if (opcion == 2) {
+                        // Salir al menú principal
+                        // Lógica para salir al menú principal
+                        // ...
+                        musica.detener();
+                        return; // Regresar al menú principal
+                    }
                 }
 
                 pelota.reverseX();

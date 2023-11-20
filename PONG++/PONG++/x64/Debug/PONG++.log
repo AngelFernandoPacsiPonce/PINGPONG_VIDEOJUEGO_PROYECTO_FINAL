@@ -1,43 +1,12 @@
-﻿  Ganador.cpp
-  Menu.cpp
-  Musica.cpp
-  Nivel1.cpp
+﻿  Nivel1.cpp
 C:\PONG++\PONG++\PONG++\Nivel1.cpp(12,28): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
 C:\PONG++\PONG++\PONG++\Nivel1.cpp(12,17): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\PONG++\PONG++\PONG++\Nivel1.cpp(116,56): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\PONG++\PONG++\PONG++\Nivel1.cpp(116,46): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\PONG++\PONG++\PONG++\Nivel1.cpp(120,52): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\PONG++\PONG++\PONG++\Nivel1.cpp(120,42): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\PONG++\PONG++\PONG++\Nivel1.cpp(122,52): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\PONG++\PONG++\PONG++\Nivel1.cpp(122,42): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-  NivelMenu.cpp
-  Paleta.cpp
-  Pantalla.cpp
+C:\PONG++\PONG++\PONG++\Nivel1.cpp(118,60): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\PONG++\PONG++\PONG++\Nivel1.cpp(118,50): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\PONG++\PONG++\PONG++\Nivel1.cpp(135,52): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\PONG++\PONG++\PONG++\Nivel1.cpp(135,42): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\PONG++\PONG++\PONG++\Nivel1.cpp(137,52): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\PONG++\PONG++\PONG++\Nivel1.cpp(137,42): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
   Pausa.cpp
-  Pelota.cpp
-C:\PONG++\PONG++\PONG++\Pelota.cpp(11,12): warning C4305: '=': truncamiento de 'double' a 'float'
-C:\PONG++\PONG++\PONG++\Pelota.cpp(12,12): warning C4305: '=': truncamiento de 'double' a 'float'
-  Puntaje.cpp
-  main.cpp
-C:\PONG++\PONG++\PONG++\main.cpp(12,51): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
-          with
-          [
-              T=unsigned int
-          ]
-C:\PONG++\PONG++\PONG++\main.cpp(12,31): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
-          with
-          [
-              T=unsigned int
-          ]
-C:\PONG++\PONG++\PONG++\main.cpp(13,63): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
-          with
-          [
-              T=unsigned int
-          ]
-C:\PONG++\PONG++\PONG++\main.cpp(13,43): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
-          with
-          [
-              T=unsigned int
-          ]
   Generando código...
   PONG++.vcxproj -> C:\PONG++\PONG++\x64\Debug\PONG++.exe
