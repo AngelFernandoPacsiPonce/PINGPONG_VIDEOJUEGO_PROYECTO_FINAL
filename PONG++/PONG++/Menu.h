@@ -1,3 +1,4 @@
+// Menu.h
 #pragma once
 #ifndef MENU_H
 #define MENU_H
@@ -16,7 +17,7 @@ public:
 private:
     int selectedItemIndex; // Índice de la opción seleccionada
     sf::Font font; // Fuente utilizada para el texto
-    sf::Text menuText[3]; // Arreglo de objetos de texto para las opciones del menú
+    sf::Text menuText[4]; // Aumenta el tamaño del arreglo para la nueva opción
     sf::Texture fondoTexture; // Textura para el fondo del menú
     sf::Sprite fondoSprite; // Sprite para mostrar el fondo
 };

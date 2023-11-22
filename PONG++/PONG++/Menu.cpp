@@ -1,4 +1,6 @@
+// Menu.cpp
 #include "Menu.h"
+#include "Creditos.h" // Agrega la inclusión de la clase Creditos
 
 Menu::Menu(float width, float height) {
     if (!font.loadFromFile("fuente.ttf")) {
@@ -33,6 +35,12 @@ Menu::Menu(float width, float height) {
     menuText[2].setCharacterSize(40);
     menuText[2].setPosition(sf::Vector2f(width / 2 - 90, height / 2 + 150));
 
+    menuText[3].setFont(font); // Configura la fuente para la nueva opción "CRÉDITOS"
+    menuText[3].setFillColor(sf::Color::White);
+    menuText[3].setString("CRÉDITOS");
+    menuText[3].setCharacterSize(20);
+    menuText[3].setPosition(static_cast<float>(width) - 300, static_cast<float>(height) - 50);
+
     selectedItemIndex = 1; // "JUGAR" seleccionado inicialmente
 }
 
@@ -40,7 +48,7 @@ void Menu::draw(sf::RenderWindow& window) {
     // Dibuja el fondo antes de los elementos de texto
     window.draw(fondoSprite);
 
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 4; i++) {
         window.draw(menuText[i]);
     }
 }
@@ -48,15 +56,15 @@ void Menu::draw(sf::RenderWindow& window) {
 void Menu::MoveUp() {
     if (selectedItemIndex != 1) {
         menuText[selectedItemIndex].setFillColor(sf::Color::White);
-        selectedItemIndex = 1;
+        selectedItemIndex = (selectedItemIndex - 1 + 4) % 4;
         menuText[selectedItemIndex].setFillColor(sf::Color::Cyan);
     }
 }
 
 void Menu::MoveDown() {
-    if (selectedItemIndex != 2) {
+    if (selectedItemIndex != 3) {
         menuText[selectedItemIndex].setFillColor(sf::Color::White);
-        selectedItemIndex = 2;
+        selectedItemIndex = (selectedItemIndex + 1) % 4;
         menuText[selectedItemIndex].setFillColor(sf::Color::Cyan);
     }
 }

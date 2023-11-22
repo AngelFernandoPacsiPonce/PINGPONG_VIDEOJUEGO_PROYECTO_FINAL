@@ -1,7 +1,6 @@
-// Pausa.cpp
 #include "Pausa.h"
 #include "pantalla.h"
-#pragma once
+#include <iostream>  // Agrega esta línea para la salida de consola
 
 Pausa::Pausa(sf::RenderWindow& mainWindow)
     : Pantalla(mainWindow), selectedItemIndex(0), returnToMenu(false) {
@@ -13,6 +12,7 @@ Pausa::Pausa(sf::RenderWindow& mainWindow)
     textoPausa.setCharacterSize(50);
     textoPausa.setString("PAUSA");
     textoPausa.setFillColor(sf::Color::Yellow);
+    textoPausa.setPosition(static_cast<float>(Pantalla::window.getSize().x) / 2 - 80, 50); // Ajusta la posición vertical
 
     // Ajuste de las posiciones y tamaños de los textos
     reanudarTexto.setCharacterSize(30);
@@ -23,7 +23,6 @@ Pausa::Pausa(sf::RenderWindow& mainWindow)
     salirTexto.setString("Salir");
     salirTexto.setPosition(static_cast<float>(Pantalla::window.getSize().x) / 2 - 50, static_cast<float>(Pantalla::window.getSize().y) / 2 + 20);
 }
-
 
 int Pausa::mostrar() {
     selectedItemIndex = 0; // Reiniciamos la selección al mostrar la pantalla de pausa
