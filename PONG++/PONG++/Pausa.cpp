@@ -1,9 +1,8 @@
 #include "Pausa.h"
 #include "pantalla.h"
-#include <iostream>  // Agrega esta línea para la salida de consola
+#include <iostream>
 
-Pausa::Pausa(sf::RenderWindow& mainWindow)
-    : Pantalla(mainWindow), selectedItemIndex(0), returnToMenu(false) {
+Pausa::Pausa(sf::RenderWindow& mainWindow) : Pantalla(mainWindow), selectedItemIndex(0), returnToMenu(false) {
     if (!font.loadFromFile("fuente.ttf")) {
         // Manejo de errores si no se puede cargar la fuente.
     }
@@ -12,23 +11,26 @@ Pausa::Pausa(sf::RenderWindow& mainWindow)
     textoPausa.setCharacterSize(50);
     textoPausa.setString("PAUSA");
     textoPausa.setFillColor(sf::Color::Yellow);
-    textoPausa.setPosition(static_cast<float>(Pantalla::window.getSize().x) / 2 - 80, 50); // Ajusta la posición vertical
+    textoPausa.setPosition(static_cast<float>(Pantalla::window.getSize().x) / 2 - 80, 50);
 
-    // Ajuste de las posiciones y tamaños de los textos
+    reanudarTexto.setFont(font);
     reanudarTexto.setCharacterSize(30);
     reanudarTexto.setString("Reanudar");
     reanudarTexto.setPosition(static_cast<float>(Pantalla::window.getSize().x) / 2 - 80, static_cast<float>(Pantalla::window.getSize().y) / 2 - 20);
+    reanudarTexto.setFillColor(sf::Color::Cyan);  // Color por defecto
 
+    salirTexto.setFont(font);
     salirTexto.setCharacterSize(30);
-    salirTexto.setString("Salir");
+    salirTexto.setString("Salir al Menu");
     salirTexto.setPosition(static_cast<float>(Pantalla::window.getSize().x) / 2 - 50, static_cast<float>(Pantalla::window.getSize().y) / 2 + 20);
+    salirTexto.setFillColor(sf::Color::White);  // Color por defecto
 }
 
 int Pausa::mostrar() {
-    selectedItemIndex = 0; // Reiniciamos la selección al mostrar la pantalla de pausa
-    returnToMenu = false; // Reiniciamos la bandera
+    selectedItemIndex = 0;
+    returnToMenu = false;
 
-    while (true) {
+    while (!returnToMenu) {
         window.clear();
         window.draw(textoPausa);
         window.draw(reanudarTexto);
@@ -50,11 +52,9 @@ int Pausa::mostrar() {
                 }
                 else if (event.key.code == sf::Keyboard::Return) {
                     if (getSelectedOption() == 0) {
-                        // Reanudar el juego
                         return getSelectedOption();
                     }
                     else if (getSelectedOption() == 1) {
-                        // Salir al Menú
                         returnToMenu = true;
                         return getSelectedOption();
                     }
@@ -62,34 +62,32 @@ int Pausa::mostrar() {
             }
         }
     }
+
+    return 0;
 }
 
 void Pausa::MoveUp() {
     if (selectedItemIndex > 0) {
-        reanudarTexto.setFillColor(sf::Color::White);
-        salirTexto.setFillColor(sf::Color::White);
         selectedItemIndex--;
-        if (selectedItemIndex == 0) {
-            reanudarTexto.setFillColor(sf::Color::Cyan);
-        }
-        else {
-            salirTexto.setFillColor(sf::Color::Cyan);
-        }
     }
+    else {
+        selectedItemIndex = 1;
+    }
+
+    reanudarTexto.setFillColor(selectedItemIndex == 0 ? sf::Color::Cyan : sf::Color::White);
+    salirTexto.setFillColor(selectedItemIndex == 1 ? sf::Color::Cyan : sf::Color::White);
 }
 
 void Pausa::MoveDown() {
     if (selectedItemIndex < 1) {
-        reanudarTexto.setFillColor(sf::Color::White);
-        salirTexto.setFillColor(sf::Color::White);
         selectedItemIndex++;
-        if (selectedItemIndex == 0) {
-            reanudarTexto.setFillColor(sf::Color::Cyan);
-        }
-        else {
-            salirTexto.setFillColor(sf::Color::Cyan);
-        }
     }
+    else {
+        selectedItemIndex = 0;
+    }
+
+    reanudarTexto.setFillColor(selectedItemIndex == 0 ? sf::Color::Cyan : sf::Color::White);
+    salirTexto.setFillColor(selectedItemIndex == 1 ? sf::Color::Cyan : sf::Color::White);
 }
 
 int Pausa::getSelectedOption() {

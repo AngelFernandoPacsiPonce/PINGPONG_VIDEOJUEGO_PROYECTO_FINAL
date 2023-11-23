@@ -7,43 +7,47 @@ Ganador::Ganador(sf::RenderWindow& mainWindow, int ganador)
         // Manejo de errores si no se puede cargar la fuente.
     }
 
+    // Configuración del texto de ganador
     textoGanador.setFont(font);
     textoGanador.setCharacterSize(50);
     textoGanador.setString("GANADOR: JUGADOR " + std::to_string(ganador));
     textoGanador.setFillColor(sf::Color::Yellow);
 
-    reiniciarTexto.setPosition(static_cast<float>(Pantalla::window.getSize().x) / 2 - 100.0f, static_cast<float>(Pantalla::window.getSize().y) / 2.0f - 25.0f);
-    siguienteNivelTexto.setPosition(static_cast<float>(Pantalla::window.getSize().x) / 2 - 100.0f, static_cast<float>(Pantalla::window.getSize().y) / 2.0f + 25.0f);
-    salirTexto.setPosition(static_cast<float>(Pantalla::window.getSize().x) / 2 - 100.0f, static_cast<float>(Pantalla::window.getSize().y) / 2.0f + 75.0f);
+    // Ajuste de la posición del texto de ganador
+    sf::FloatRect textBounds = textoGanador.getLocalBounds();
+    textoGanador.setOrigin(textBounds.width / 2.0f, textBounds.height / 2.0f);
+    textoGanador.setPosition(static_cast<float>(Pantalla::window.getSize().x) / 2.0f,
+        static_cast<float>(Pantalla::window.getSize().y) / 4.0f);
 
+    // Configuración de la opción de reiniciar
     reiniciarTexto.setCharacterSize(20);
     reiniciarTexto.setString("Reiniciar Partida");
+    reiniciarTexto.setPosition(static_cast<float>(Pantalla::window.getSize().x) / 2.0f,
+        static_cast<float>(Pantalla::window.getSize().y) / 2.0f - 25.0f);
 
+    // Configuración de la opción de siguiente nivel
     siguienteNivelTexto.setCharacterSize(20);
     siguienteNivelTexto.setString("Siguiente Nivel");
+    siguienteNivelTexto.setPosition(static_cast<float>(Pantalla::window.getSize().x) / 2.0f,
+        static_cast<float>(Pantalla::window.getSize().y) / 2.0f + 25.0f);
 
+    // Configuración de la opción de salir
     salirTexto.setCharacterSize(20);
     salirTexto.setString("Salir");
+    salirTexto.setPosition(static_cast<float>(Pantalla::window.getSize().x) / 2.0f,
+        static_cast<float>(Pantalla::window.getSize().y) / 2.0f + 75.0f);
 }
 
 int Ganador::mostrar() {
     selectedItemIndex = 0;
 
-    while (true) {
-        window.clear();
-        window.draw(textoGanador);
-        window.draw(reiniciarTexto);
-        window.draw(siguienteNivelTexto);
-        window.draw(salirTexto);
-        window.display();
-
+    while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
                 window.close();
             }
-
-            if (event.type == sf::Event::KeyReleased) {
+            else if (event.type == sf::Event::KeyReleased) {
                 if (event.key.code == sf::Keyboard::Up) {
                     MoveUp();
                 }
@@ -55,7 +59,16 @@ int Ganador::mostrar() {
                 }
             }
         }
+
+        window.clear();
+        window.draw(textoGanador);
+        window.draw(reiniciarTexto);
+        window.draw(siguienteNivelTexto);
+        window.draw(salirTexto);
+        window.display();
     }
+
+    return 0;
 }
 
 void Ganador::MoveUp() {
