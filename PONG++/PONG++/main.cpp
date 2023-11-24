@@ -18,12 +18,12 @@ int main() {
     bool inMenu = true;
     bool inNivelMenu = false;
     bool inCreditos = false;
-    bool inPausa = false; // Agregado para manejar la pausa
+    bool inPausa = false;
     bool musicPlaying = false;
 
     Nivel1 nivel1(window, musica);
     Creditos creditos(window);
-    Pausa pausa(window); // Agregado para manejar la pausa
+    Pausa pausa(window);
 
     while (window.isOpen()) {
         sf::Event event;
@@ -43,7 +43,7 @@ int main() {
                     else if (inCreditos) {
                         // Lógica para manejar la ventana de créditos
                     }
-                    else if (inPausa) { // Agregado para manejar la pausa
+                    else if (inPausa) {
                         pausa.MoveUp();
                     }
                 }
@@ -57,7 +57,7 @@ int main() {
                     else if (inCreditos) {
                         // Lógica para manejar la ventana de créditos
                     }
-                    else if (inPausa) { // Agregado para manejar la pausa
+                    else if (inPausa) {
                         pausa.MoveDown();
                     }
                 }
@@ -106,11 +106,13 @@ int main() {
                     }
                     else if (inCreditos) {
                         // Lógica para manejar la ventana de créditos
-                        creditos.Retroceder();
-                        inCreditos = false;
-                        inMenu = true;
+                        creditos.Mostrar();
+                        if (creditos.getRetrocederSeleccionado()) {
+                            inCreditos = false;
+                            inMenu = true;
+                        }
                     }
-                    else if (inPausa) { // Agregado para manejar la pausa
+                    else if (inPausa) {
                         int pausaOption = pausa.mostrar();
                         if (pausaOption == 0) {
                             inPausa = false;
@@ -121,7 +123,7 @@ int main() {
                         }
                     }
                 }
-                else if (event.key.code == sf::Keyboard::P) { // Agregado para pausar el juego
+                else if (event.key.code == sf::Keyboard::P) {
                     if (!inPausa) {
                         inPausa = true;
                     }
@@ -151,10 +153,13 @@ int main() {
             menuNiveles.draw(window);
         }
         else if (inCreditos) {
-            // Lógica para manejar la ventana de créditos
             creditos.Mostrar();
+            if (creditos.getRetrocederSeleccionado()) {
+                inCreditos = false;
+                inMenu = true;
+            }
         }
-        else if (inPausa) { // Agregado para manejar la pausa
+        else if (inPausa) {
             pausa.mostrar();
         }
 

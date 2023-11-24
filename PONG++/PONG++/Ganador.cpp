@@ -10,7 +10,7 @@ Ganador::Ganador(sf::RenderWindow& mainWindow, int ganador)
 
     // Configuración del texto de ganador
     textoGanador.setFont(font);
-    textoGanador.setCharacterSize(50);
+    textoGanador.setCharacterSize(80);
     textoGanador.setString("GANADOR: JUGADOR " + std::to_string(ganador));
     textoGanador.setFillColor(sf::Color::Yellow);
     sf::FloatRect textBounds = textoGanador.getLocalBounds();
@@ -20,24 +20,24 @@ Ganador::Ganador(sf::RenderWindow& mainWindow, int ganador)
 
     // Configuración de la opción de reiniciar
     reiniciarTexto.setFont(font);
-    reiniciarTexto.setCharacterSize(20);
+    reiniciarTexto.setCharacterSize(40);
     reiniciarTexto.setString("Reiniciar Partida");
-    reiniciarTexto.setPosition(static_cast<float>(Pantalla::window.getSize().x) / 2.0f - 110.0f,
+    reiniciarTexto.setPosition(static_cast<float>(Pantalla::window.getSize().x) / 2.0f - 200.0f,
         static_cast<float>(Pantalla::window.getSize().y) / 2.0f - 25.0f);
     reiniciarTexto.setFillColor(sf::Color::Cyan);  // Reiniciar seleccionado inicialmente
 
     // Configuración de la opción de siguiente nivel
     siguienteNivelTexto.setFont(font);
-    siguienteNivelTexto.setCharacterSize(20);
+    siguienteNivelTexto.setCharacterSize(40);
     siguienteNivelTexto.setString("Siguiente Nivel");
-    siguienteNivelTexto.setPosition(static_cast<float>(Pantalla::window.getSize().x) / 2.0f - 110.0f,
+    siguienteNivelTexto.setPosition(static_cast<float>(Pantalla::window.getSize().x) / 2.0f - 200.0f,
         static_cast<float>(Pantalla::window.getSize().y) / 2.0f + 25.0f);
 
     // Configuración de la opción de salir
     salirTexto.setFont(font);
-    salirTexto.setCharacterSize(20);
+    salirTexto.setCharacterSize(40);
     salirTexto.setString("Salir");
-    salirTexto.setPosition(static_cast<float>(Pantalla::window.getSize().x) / 2.0f - 110.0f,
+    salirTexto.setPosition(static_cast<float>(Pantalla::window.getSize().x) / 2.0f - 80.0f,
         static_cast<float>(Pantalla::window.getSize().y) / 2.0f + 75.0f);
 
     

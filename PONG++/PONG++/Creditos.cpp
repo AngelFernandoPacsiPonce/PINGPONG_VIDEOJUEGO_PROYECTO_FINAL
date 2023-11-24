@@ -1,28 +1,34 @@
+// Creditos.cpp
 #include "Creditos.h"
+#include <iostream>
 
 Creditos::Creditos(sf::RenderWindow& window)
-    : window(window) {
+    : window(window), retrocederSeleccionado(false) {
+    // Cargar el fondo
+    if (!fondoTexture.loadFromFile("fondocreditos.png")) {
+        // Manejo de errores si no se puede cargar el fondo
+    }
+    fondoSprite.setTexture(fondoTexture);
+
     if (!font.loadFromFile("fuentenivel1.ttf")) {
         // Manejo de errores si no se puede cargar la fuente.
     }
 
     textoFernando.setFont(font);
-    textoFernando.setCharacterSize(30);
+    textoFernando.setCharacterSize(50);
     textoFernando.setString("Fernando");
-    textoFernando.setFillColor(sf::Color::White);
-
-    // Ajusta la posición para colocar el texto en el centro izquierda
-    textoFernando.setPosition(static_cast<float>(window.getSize().x) / 4, static_cast<float>(window.getSize().y) / 2 - 20);
+    textoFernando.setFillColor(sf::Color::Blue);
+    textoFernando.setPosition(static_cast<float>(0.9 * window.getSize().x) / 5, static_cast<float>(window.getSize().y) / 2 - 220);
 
     textoRuth.setFont(font);
-    textoRuth.setCharacterSize(30);
+    textoRuth.setCharacterSize(50);
     textoRuth.setString("Ruth");
-    textoRuth.setFillColor(sf::Color::White);
+    textoRuth.setFillColor(sf::Color::Green);
+    textoRuth.setPosition(static_cast<float>(3.3 * window.getSize().x) / 5, static_cast<float>(window.getSize().y) / 2 - 220);
 
-    // Ajusta la posición para colocar el texto en el centro derecha
-    textoRuth.setPosition(static_cast<float>(3 * window.getSize().x) / 4, static_cast<float>(window.getSize().y) / 2 - 20);
-
-    textoRetroceder.setPosition(20, static_cast<float>(window.getSize().y) - 20);
+    float retrocederX = 900;  // Ajusta el valor 20 según tu preferencia
+    float retrocederY = static_cast<float>(window.getSize().y) - textoRetroceder.getLocalBounds().height - 50;  // Ajusta el valor 20 según tu preferencia
+    textoRetroceder.setPosition(retrocederX, retrocederY);
     textoRetroceder.setFont(font);
     textoRetroceder.setFillColor(sf::Color::Cyan);
     textoRetroceder.setString("RETROCEDER");
@@ -31,7 +37,9 @@ Creditos::Creditos(sf::RenderWindow& window)
 }
 
 void Creditos::Mostrar() {
-    while (window.isOpen()) {
+    retrocederSeleccionado = false;  // Reiniciamos el estado
+
+    while (window.isOpen() && !retrocederSeleccionado) {
         sf::Event event;
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
@@ -41,21 +49,33 @@ void Creditos::Mostrar() {
             if (event.type == sf::Event::KeyReleased) {
                 if (event.key.code == sf::Keyboard::Return) {
                     Retroceder();
-                    return;
+             
+ 
+                    return;  // Salir de la función después de procesar el evento de retroceso
                 }
             }
         }
 
         window.clear();
+
+        // Dibujar el fondo
+        window.draw(fondoSprite);
+
+        // Dibujar el resto de los elementos
         window.draw(textoFernando);
         window.draw(textoRuth);
         window.draw(textoRetroceder);
+
         window.display();
     }
 }
 
 void Creditos::Retroceder() {
     // Código para redirigir al menú principal
-    window.clear();
-    window.display();
+    retrocederSeleccionado = true;
+
+}
+
+bool Creditos::getRetrocederSeleccionado() const {
+    return retrocederSeleccionado;
 }

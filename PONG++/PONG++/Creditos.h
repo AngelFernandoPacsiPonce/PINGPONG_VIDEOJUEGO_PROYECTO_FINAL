@@ -1,4 +1,6 @@
+// Creditos.h
 #pragma once
+
 #include <SFML/Graphics.hpp>
 
 class Creditos {
@@ -7,12 +9,15 @@ public:
 
     void Mostrar();
     void Retroceder();
+    bool getRetrocederSeleccionado() const;
 
 private:
-    sf::Font font;
-    sf::Text textoCreditos;
-    sf::Text textoRuth;
-    sf::Text textoFernando;
-    sf::Text textoRetroceder;
     sf::RenderWindow& window;
+    sf::Font font;
+    sf::Text textoFernando;
+    sf::Text textoRuth;
+    sf::Text textoRetroceder;
+    sf::Texture fondoTexture;  // Nueva variable para la textura del fondo
+    sf::Sprite fondoSprite;    // Nueva variable para el sprite del fondo
+    bool retrocederSeleccionado;
 };
