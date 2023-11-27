@@ -3,7 +3,8 @@
 #include "NivelMenu.h"
 #include "Musica.h"
 #include "Nivel1.h"
-#include "Nivel2.h"  // Agregado para el Nivel 2
+#include "Nivel2.h"
+#include "Nivel3.h"  // Agregado para el Nivel 3
 #include "Creditos.h"
 #include "Pausa.h"
 
@@ -24,6 +25,7 @@ int main() {
 
     Nivel1 nivel1(window, musica);
     Nivel2 nivel2(window, musica);  // Instancia para el Nivel 2
+    Nivel3 nivel3(window, musica);  // Instancia para el Nivel 3
     Creditos creditos(window);
     Pausa pausa(window);
 
@@ -117,6 +119,21 @@ int main() {
                                 // Crear una instancia de Nivel2
                                 Nivel2 nivel2(window, musica);
                                 nivel2.run();
+                                inMenu = true;
+                            }
+                            else if (selectedNivel == 2) {
+                                inNivelMenu = false;
+
+                                if (!musicPlaying) {
+                                    musica.detener();
+                                    musica.cargarMusicaNivel3();
+                                    musica.reproducirNivel3();
+                                    musicPlaying = true;
+                                }
+
+                                // Crear una instancia de Nivel3
+                                Nivel3 nivel3(window, musica);
+                                nivel3.run();
                                 inMenu = true;
                             }
                         }

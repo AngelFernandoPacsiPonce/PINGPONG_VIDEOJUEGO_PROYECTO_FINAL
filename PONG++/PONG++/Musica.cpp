@@ -1,3 +1,5 @@
+// Musica.cpp
+
 #include "Musica.h"
 
 Musica::Musica() {
@@ -15,8 +17,15 @@ void Musica::cargarMusicaNivel1() {
         // Manejo de errores si no se puede cargar la música.
     }
 }
+
 void Musica::cargarMusicaNivel2() {
     if (!music.openFromFile("musicanivel2.mp3")) {
+        // Manejo de errores si no se puede cargar la música.
+    }
+}
+
+void Musica::cargarMusicaNivel3() {
+    if (!music.openFromFile("musicanivel3.mp3")) {
         // Manejo de errores si no se puede cargar la música.
     }
 }
@@ -38,10 +47,22 @@ void Musica::reproducirNivel1() {
     music.play();
     reproduciendo = true;
 }
+
 void Musica::reproducirNivel2() {
     if (!reproduciendo) {
         detener(); // Detener la música del menú antes de reproducir la del nivel 1
         if (!music.openFromFile("musicanivel2.mp3")) {
+            // Manejo de errores si no se puede cargar la música.
+        }
+    }
+    music.play();
+    reproduciendo = true;
+}
+
+void Musica::reproducirNivel3() {
+    if (!reproduciendo) {
+        detener(); // Detener la música del menú antes de reproducir la del nivel 1
+        if (!music.openFromFile("musicanivel3.mp3")) {
             // Manejo de errores si no se puede cargar la música.
         }
     }
