@@ -1,51 +1,51 @@
 ﻿  Menu.cpp
   Musica.cpp
   Nivel1.cpp
-C:\PONG++\PONG++\PONG++\Nivel1.cpp(13,28): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\PONG++\PONG++\PONG++\Nivel1.cpp(13,17): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\PONG++\PONG++\PONG++\Nivel1.cpp(130,60): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\PONG++\PONG++\PONG++\Nivel1.cpp(130,50): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\PONG++\PONG++\PONG++\Nivel1.cpp(147,52): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\PONG++\PONG++\PONG++\Nivel1.cpp(147,42): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\PONG++\PONG++\PONG++\Nivel1.cpp(149,52): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\PONG++\PONG++\PONG++\Nivel1.cpp(149,42): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\PONG++\PONG++\PONG++\Nivel1.cpp(14,28): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\PONG++\PONG++\PONG++\Nivel1.cpp(14,17): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\PONG++\PONG++\PONG++\Nivel1.cpp(112,60): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\PONG++\PONG++\PONG++\Nivel1.cpp(112,50): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\PONG++\PONG++\PONG++\Nivel1.cpp(125,52): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\PONG++\PONG++\PONG++\Nivel1.cpp(125,42): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\PONG++\PONG++\PONG++\Nivel1.cpp(127,52): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\PONG++\PONG++\PONG++\Nivel1.cpp(127,42): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
   Nivel2.cpp
-C:\PONG++\PONG++\PONG++\Nivel2.cpp(11,67): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+C:\PONG++\PONG++\PONG++\Nivel2.cpp(11,63): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
           with
           [
               T=unsigned int
           ]
-C:\PONG++\PONG++\PONG++\Nivel2.cpp(11,39): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+C:\PONG++\PONG++\PONG++\Nivel2.cpp(11,35): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
           with
           [
               T=unsigned int
           ]
-C:\PONG++\PONG++\PONG++\Nivel2.cpp(131,91): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+C:\PONG++\PONG++\PONG++\Nivel2.cpp(142,87): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
           with
           [
               T=unsigned int
           ]
-C:\PONG++\PONG++\PONG++\Nivel2.cpp(131,67): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+C:\PONG++\PONG++\PONG++\Nivel2.cpp(142,63): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
           with
           [
               T=unsigned int
           ]
-C:\PONG++\PONG++\PONG++\Nivel2.cpp(146,83): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+C:\PONG++\PONG++\PONG++\Nivel2.cpp(158,79): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
           with
           [
               T=unsigned int
           ]
-C:\PONG++\PONG++\PONG++\Nivel2.cpp(146,59): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+C:\PONG++\PONG++\PONG++\Nivel2.cpp(158,55): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
           with
           [
               T=unsigned int
           ]
-C:\PONG++\PONG++\PONG++\Nivel2.cpp(148,83): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+C:\PONG++\PONG++\PONG++\Nivel2.cpp(160,79): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
           with
           [
               T=unsigned int
           ]
-C:\PONG++\PONG++\PONG++\Nivel2.cpp(148,59): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+C:\PONG++\PONG++\PONG++\Nivel2.cpp(160,55): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
           with
           [
               T=unsigned int
@@ -61,32 +61,32 @@ C:\PONG++\PONG++\PONG++\Nivel3.cpp(10,35): warning C4244: 'argumento': conversi�
           [
               T=unsigned int
           ]
-C:\PONG++\PONG++\PONG++\Nivel3.cpp(130,87): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+C:\PONG++\PONG++\PONG++\Nivel3.cpp(141,87): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
           with
           [
               T=unsigned int
           ]
-C:\PONG++\PONG++\PONG++\Nivel3.cpp(130,63): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+C:\PONG++\PONG++\PONG++\Nivel3.cpp(141,63): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
           with
           [
               T=unsigned int
           ]
-C:\PONG++\PONG++\PONG++\Nivel3.cpp(145,79): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+C:\PONG++\PONG++\PONG++\Nivel3.cpp(157,79): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
           with
           [
               T=unsigned int
           ]
-C:\PONG++\PONG++\PONG++\Nivel3.cpp(145,55): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+C:\PONG++\PONG++\PONG++\Nivel3.cpp(157,55): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
           with
           [
               T=unsigned int
           ]
-C:\PONG++\PONG++\PONG++\Nivel3.cpp(147,79): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+C:\PONG++\PONG++\PONG++\Nivel3.cpp(159,79): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
           with
           [
               T=unsigned int
           ]
-C:\PONG++\PONG++\PONG++\Nivel3.cpp(147,55): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+C:\PONG++\PONG++\PONG++\Nivel3.cpp(159,55): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
           with
           [
               T=unsigned int

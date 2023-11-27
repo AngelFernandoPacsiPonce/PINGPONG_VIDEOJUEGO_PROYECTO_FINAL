@@ -7,7 +7,7 @@ Nivel3::Nivel3(sf::RenderWindow& mainWindow, Musica& music)
     : window(mainWindow),
     paleta1(30, 250),
     paleta2(1150, 250),
-    pelota(mainWindow.getSize().y / 2, mainWindow.getSize().x / 2, "pelota3.png"), // Asegúrate de tener la textura para la pelota del Nivel 3
+    pelota(mainWindow.getSize().y / 2, mainWindow.getSize().x / 2, "pelota3.png"),
     musica(music),
     puntaje1(60, 20, "fuentenivel1.ttf"),
     puntaje2(900, 20, "fuentenivel1.ttf"),
@@ -15,7 +15,7 @@ Nivel3::Nivel3(sf::RenderWindow& mainWindow, Musica& music)
     fondoTexture(),
     fondoSprite()
 {
-    if (!fondoTexture.loadFromFile("fondonivel3.jpg")) // Asegúrate de tener la textura para el fondo del Nivel 3
+    if (!fondoTexture.loadFromFile("fondonivel3.jpg"))
     {
         std::cerr << "Error al cargar la textura del fondo." << std::endl;
     }
@@ -36,6 +36,9 @@ void Nivel3::run()
 {
     Pausa pausa(window);
     bool pausado = false;
+
+    // Variable para controlar si ya se reprodujo el sonido de choque con la pared
+    bool choqueParedReproducido = false;
 
     while (window.isOpen())
     {
@@ -102,11 +105,19 @@ void Nivel3::run()
                 pelota.getSprite().getGlobalBounds().intersects(paleta2.getShape().getGlobalBounds()))
             {
                 pelota.reverseX();
+                // No reproducir el sonido de choque de pelota aquí
             }
 
             // Colisión de la pelota con los bordes de la ventana
             if (pelota.getSprite().getPosition().x <= 0 || pelota.getSprite().getPosition().x >= window.getSize().x - pelota.getRadio())
             {
+                // Reproduce el sonido de choque de pelota aquí solo si no se reprodujo antes
+                if (!choqueParedReproducido)
+                {
+                    musica.reproducirChoquePelota();
+                    choqueParedReproducido = true;
+                }
+
                 if (pelota.getSprite().getPosition().x <= 0)
                 {
                     puntaje2.aumentarPuntaje();
@@ -128,6 +139,7 @@ void Nivel3::run()
                         puntaje1.resetearPuntaje();
                         puntaje2.resetearPuntaje();
                         pelota.setPosition(window.getSize().x / 2, window.getSize().y / 2);
+                        choqueParedReproducido = false;
                     }
                     else if (opcion == 1)
                     {
@@ -146,10 +158,16 @@ void Nivel3::run()
                 pelota.reverseY();
                 pelota.setPosition(window.getSize().x / 2, window.getSize().y / 2);
             }
+            else
+            {
+                // Si la pelota no está en las paredes laterales, permite reproducir el sonido nuevamente
+                choqueParedReproducido = false;
+            }
 
             if (pelota.getSprite().getPosition().y <= 0 || pelota.getSprite().getPosition().y >= window.getSize().y - pelota.getRadio() * 2)
             {
                 pelota.reverseY();
+                // No reproducir el sonido de choque de pelota aquí
             }
         }
 

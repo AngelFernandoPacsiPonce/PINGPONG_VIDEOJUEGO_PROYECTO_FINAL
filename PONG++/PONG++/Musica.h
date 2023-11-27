@@ -1,5 +1,3 @@
-// Musica.h
-
 #pragma once
 
 #ifndef MUSICA_H
@@ -14,17 +12,21 @@ public:
     void cargarMusicaMenu();
     void cargarMusicaNivel1();
     void cargarMusicaNivel2();
-    void cargarMusicaNivel3();  // Corregido: nombre correcto de la función
+    void cargarMusicaNivel3();
+    void cargarSonidoChoquePelota();
     void reproducirMenu();
     void reproducirNivel1();
     void reproducirNivel2();
-    void reproducirNivel3();  // Corregido: nombre correcto de la función
+    void reproducirNivel3();
+    void reproducirChoquePelota();
     void detener();
     void pausar();
     void reanudar();
 
 private:
     sf::Music music;
+    sf::SoundBuffer choquePelotaBuffer;
+    sf::Sound choquePelotaSound;
     bool reproduciendo;
 };
 
