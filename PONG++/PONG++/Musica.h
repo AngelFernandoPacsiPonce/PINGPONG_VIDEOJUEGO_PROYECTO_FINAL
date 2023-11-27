@@ -1,4 +1,5 @@
 #pragma once
+
 #ifndef MUSICA_H
 #define MUSICA_H
 
@@ -10,8 +11,10 @@ public:
 
     void cargarMusicaMenu();
     void cargarMusicaNivel1();
+    void cargarMusicaNivel2();
     void reproducirMenu();
     void reproducirNivel1();
+    void reproducirNivel2();
     void detener();
     void pausar();
     void reanudar();

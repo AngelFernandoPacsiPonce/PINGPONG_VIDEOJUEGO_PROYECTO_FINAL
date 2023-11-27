@@ -1,4 +1,5 @@
 #include "Nivel1.h"
+#include "Nivel2.h"
 #include "Musica.h"
 #include "Pausa.h"
 #include <iostream>
@@ -129,9 +130,9 @@ void Nivel1::run() {
                         pelota.setPosition(ancho / 2, alto / 2);
                     }
                     else if (opcion == 1) {
-                        // Pasar al siguiente nivel
-                        // Lógica para pasar al siguiente nivel
-                        // ...
+                        // Implementa la lógica para pasar al siguiente nivel (Nivel 2)
+                        Nivel2 nivel2(window, musica);
+                        nivel2.run();
                     }
                     else if (opcion == 2) {
                         // Salir al menú principal

@@ -15,6 +15,11 @@ void Musica::cargarMusicaNivel1() {
         // Manejo de errores si no se puede cargar la música.
     }
 }
+void Musica::cargarMusicaNivel2() {
+    if (!music.openFromFile("musicanivel2.mp3")) {
+        // Manejo de errores si no se puede cargar la música.
+    }
+}
 
 void Musica::reproducirMenu() {
     if (music.openFromFile("musicamenu.mp3")) {
@@ -27,6 +32,16 @@ void Musica::reproducirNivel1() {
     if (!reproduciendo) {
         detener(); // Detener la música del menú antes de reproducir la del nivel 1
         if (!music.openFromFile("musicanivel1.mp3")) {
+            // Manejo de errores si no se puede cargar la música.
+        }
+    }
+    music.play();
+    reproduciendo = true;
+}
+void Musica::reproducirNivel2() {
+    if (!reproduciendo) {
+        detener(); // Detener la música del menú antes de reproducir la del nivel 1
+        if (!music.openFromFile("musicanivel2.mp3")) {
             // Manejo de errores si no se puede cargar la música.
         }
     }
