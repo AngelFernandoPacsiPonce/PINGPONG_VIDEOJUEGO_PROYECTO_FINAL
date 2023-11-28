@@ -7,11 +7,9 @@ public:
     void updatePosition();
     void reverseX();
     void reverseY();
-    void setPosition(float x, float y);
+    void setPosition(float x, float y);  // Nuevo método para establecer la posición
     sf::Sprite getSprite();
     float getRadio();
-    void incrementarVelocidad();  // Nuevo método para incrementar la velocidad
-    void resetearVelocidad();     // Nuevo método para resetear la velocidad
 
 private:
     float x, y;
@@ -19,5 +17,4 @@ private:
     sf::Sprite pelota;
     float radio;
     sf::Texture textura;
-    float factorIncrementoVelocidad;  // Nuevo miembro para controlar el incremento de velocidad
 };
