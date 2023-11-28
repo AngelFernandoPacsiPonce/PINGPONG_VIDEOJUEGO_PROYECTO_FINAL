@@ -18,7 +18,9 @@ private:
     Paleta paleta1;
     Paleta paleta2;
     PaletaFija paleta3;
-    PaletaFija paleta4; // Agrega más paletas fijas según sea necesario
+    PaletaFija paleta4;
+    PaletaFija paleta5; // Nueva paleta fija
+   
     Pelota pelota;
     Musica& musica;
     Puntaje puntaje1;
@@ -28,6 +30,6 @@ private:
     sf::Texture fondoTexture;
     sf::Sprite fondoSprite;
 
-    void actualizarPosicionPaletasFijas(); // Nuevo método para manejar la posición de las paletas fijas
+    void actualizarPosicionPaletasFijas();
     float separacionEntrePaletas;
 };

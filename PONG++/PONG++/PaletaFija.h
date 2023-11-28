@@ -6,7 +6,8 @@ class PaletaFija {
 public:
     PaletaFija(float x, float y);
     sf::RectangleShape getShape() const;
-    void setPosition(float x, float y); // Nuevo método para cambiar la posición de la paleta
+    void setPosition(float x, float y);
+    void setColor(sf::Color color); // Agregada la declaración de la función setColor
 
 private:
     sf::RectangleShape paletaShape;

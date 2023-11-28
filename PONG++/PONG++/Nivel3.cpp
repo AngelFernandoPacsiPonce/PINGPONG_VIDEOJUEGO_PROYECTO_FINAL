@@ -9,7 +9,9 @@ Nivel3::Nivel3(sf::RenderWindow& mainWindow, Musica& music)
     paleta1(30, 250),
     paleta2(1150, 250),
     paleta3(mainWindow.getSize().x / 2 - 10, mainWindow.getSize().y / 2 - 50),
-    paleta4(mainWindow.getSize().x / 2 - 10, mainWindow.getSize().y / 2 - 50 + separacionEntrePaletas),
+    paleta4(mainWindow.getSize().x / 2 - 10, mainWindow.getSize().y / 2 - 205 + separacionEntrePaletas),
+    paleta5(mainWindow.getSize().x / 2 - 10, window.getSize().y / 2 - 50 + 2 * separacionEntrePaletas),
+
     pelota(mainWindow.getSize().y / 2, mainWindow.getSize().x / 2, "pelota3.png"),
     musica(music),
     puntaje1(60, 20, "fuentenivel1.ttf"),
@@ -37,9 +39,14 @@ Nivel3::Nivel3(sf::RenderWindow& mainWindow, Musica& music)
 }
 
 void Nivel3::actualizarPosicionPaletasFijas() {
-    paleta3.setPosition(window.getSize().x / 2 - 10, window.getSize().y / 2 - 50);
-    paleta4.setPosition(window.getSize().x / 2 - 10, window.getSize().y / 2 - 50 + separacionEntrePaletas);
-    // ...
+    paleta3.setPosition(window.getSize().x / 2 - 10, window.getSize().y / 2 - 320);
+    paleta4.setPosition(window.getSize().x / 2 - 10, window.getSize().y / 2 - 170 + separacionEntrePaletas);
+    paleta5.setPosition(window.getSize().x / 2 - 10, window.getSize().y / 2 - 35 + 2 * separacionEntrePaletas - 20);
+
+    // Establece el color de las paletas fijas
+    paleta3.setColor(sf::Color::Blue); // Cambia el color según tus necesidades
+    paleta4.setColor(sf::Color::Blue);
+    paleta5.setColor(sf::Color::Blue);
 }
 
 void Nivel3::run() {
@@ -97,7 +104,9 @@ void Nivel3::run() {
             if (pelota.getSprite().getGlobalBounds().intersects(paleta1.getShape().getGlobalBounds()) ||
                 pelota.getSprite().getGlobalBounds().intersects(paleta2.getShape().getGlobalBounds()) ||
                 pelota.getSprite().getGlobalBounds().intersects(paleta3.getShape().getGlobalBounds()) ||
-                pelota.getSprite().getGlobalBounds().intersects(paleta4.getShape().getGlobalBounds())) { // Considera todas las paletas fijas
+                pelota.getSprite().getGlobalBounds().intersects(paleta4.getShape().getGlobalBounds()) ||
+                pelota.getSprite().getGlobalBounds().intersects(paleta5.getShape().getGlobalBounds())) {
+
                 pelota.reverseX();
             }
 
@@ -123,7 +132,7 @@ void Nivel3::run() {
                     }
                     else if (opcion == 1) {
                         // Lógica para pasar al siguiente nivel
-                        
+
                     }
                     else if (opcion == 2) {
                         musica.detener();
@@ -150,8 +159,9 @@ void Nivel3::run() {
         window.draw(paleta1.getShape());
         window.draw(paleta2.getShape());
         window.draw(paleta3.getShape());
-        window.draw(paleta4.getShape()); //
         window.draw(paleta4.getShape());
+        window.draw(paleta5.getShape());  // Agrega las nuevas paletas al dibujo
+
         window.draw(pelota.getSprite());
         window.draw(puntaje1.getTexto());
         window.draw(puntaje2.getTexto());
