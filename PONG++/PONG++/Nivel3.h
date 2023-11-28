@@ -6,7 +6,7 @@
 #include "Musica.h"
 #include "Puntaje.h"
 #include "Ganador.h"
-#include "Barrera.h"
+#include "PaletaFija.h"
 
 class Nivel3 {
 public:
@@ -17,14 +17,17 @@ private:
     sf::RenderWindow& window;
     Paleta paleta1;
     Paleta paleta2;
+    PaletaFija paleta3;
+    PaletaFija paleta4; // Agrega más paletas fijas según sea necesario
     Pelota pelota;
     Musica& musica;
     Puntaje puntaje1;
     Puntaje puntaje2;
     Ganador ganador;
-    std::vector<Barrera> barreras;
-    void inicializarBarreras();
 
     sf::Texture fondoTexture;
     sf::Sprite fondoSprite;
+
+    void actualizarPosicionPaletasFijas(); // Nuevo método para manejar la posición de las paletas fijas
+    float separacionEntrePaletas;
 };

@@ -19,7 +19,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Barrera.h" />
     <ClInclude Include="Creditos.h" />
     <ClInclude Include="Ganador.h" />
     <ClInclude Include="Menu.h" />
@@ -30,13 +29,13 @@
     <ClInclude Include="NivelMenu.h" />
     <ClInclude Include="Paleta.h" />
     <ClInclude Include="PaletaAutomatica.h" />
+    <ClInclude Include="PaletaFija.h" />
     <ClInclude Include="Pantalla.h" />
     <ClInclude Include="Pausa.h" />
     <ClInclude Include="Pelota.h" />
     <ClInclude Include="Puntaje.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Barrera.cpp" />
     <ClCompile Include="Creditos.cpp" />
     <ClCompile Include="Ganador.cpp" />
     <ClCompile Include="main.cpp" />
@@ -48,6 +47,7 @@
     <ClCompile Include="NivelMenu.cpp" />
     <ClCompile Include="Paleta.cpp" />
     <ClCompile Include="PaletaAutomatica.cpp" />
+    <ClCompile Include="PaletaFija.cpp" />
     <ClCompile Include="Pantalla.cpp" />
     <ClCompile Include="Pausa.cpp" />
     <ClCompile Include="Pelota.cpp" />

@@ -54,10 +54,10 @@
     <ClInclude Include="Creditos.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="Barrera.h">
+    <ClInclude Include="PaletaAutomatica.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="PaletaAutomatica.h">
+    <ClInclude Include="PaletaFija.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
@@ -104,10 +104,10 @@
     <ClCompile Include="Creditos.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="Barrera.cpp">
+    <ClCompile Include="PaletaAutomatica.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="PaletaAutomatica.cpp">
+    <ClCompile Include="PaletaFija.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
