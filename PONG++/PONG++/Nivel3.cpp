@@ -30,6 +30,20 @@ Nivel3::Nivel3(sf::RenderWindow& mainWindow, Musica& music)
 
     musica.cargarMusicaNivel3();
     musica.reproducirNivel3();
+    inicializarBarreras();  // Llamada para inicializar las barreras
+}
+
+void Nivel3::inicializarBarreras() {
+    float separacionEntreBarreras = 50.0f;  // Puedes ajustar la separación según tu diseño
+    float x = window.getSize().x / 2 - 5.0f;  // Posición inicial de la primera barrera
+
+    barreras.clear();  // Limpiamos las barreras para evitar duplicados
+
+    for (int i = 0; i < 3; ++i) {
+        Barrera barrera(x, separacionEntreBarreras * i, 10, 100);
+        std::cout << "Barrera " << i << " - Posición: " << barrera.getShape().getPosition().x << ", " << barrera.getShape().getPosition().y << std::endl;
+        barreras.push_back(barrera);
+    }
 }
 
 void Nivel3::run()
@@ -39,6 +53,7 @@ void Nivel3::run()
 
     // Variable para controlar si ya se reprodujo el sonido de choque con la pared
     bool choqueParedReproducido = false;
+    inicializarBarreras();
 
     while (window.isOpen())
     {
@@ -106,6 +121,15 @@ void Nivel3::run()
             {
                 pelota.reverseX();
                 // No reproducir el sonido de choque de pelota aquí
+            }
+
+            // Colisión de la pelota con las barreras
+            for (auto& barrera : barreras) {
+                if (pelota.getSprite().getGlobalBounds().intersects(barrera.getShape().getGlobalBounds())) {
+                    pelota.reverseX();
+                    barrera.setPosition(-100, -100);  // Movemos la barrera fuera de la pantalla
+                    // Puedes agregar aquí cualquier lógica adicional al colisionar con la barrera
+                }
             }
 
             // Colisión de la pelota con los bordes de la ventana
@@ -176,6 +200,15 @@ void Nivel3::run()
         window.draw(paleta1.getShape());
         window.draw(paleta2.getShape());
         window.draw(pelota.getSprite());
+
+        // Dibujar las barreras en el bucle principal
+        std::cout << "Número de barreras a dibujar: " << barreras.size() << std::endl;
+
+        for (const auto& barrera : barreras) {
+            window.draw(barrera.getShape());
+            std::cout << "Dibujando barrera en posición: " << barrera.getShape().getPosition().x << ", " << barrera.getShape().getPosition().y << std::endl;
+        }
+
         window.draw(puntaje1.getTexto());
         window.draw(puntaje2.getTexto());
         window.display();

@@ -6,6 +6,7 @@
 #include "Musica.h"
 #include "Puntaje.h"
 #include "Ganador.h"
+#include "Barrera.h"
 
 class Nivel3 {
 public:
@@ -21,6 +22,8 @@ private:
     Puntaje puntaje1;
     Puntaje puntaje2;
     Ganador ganador;
+    std::vector<Barrera> barreras;
+    void inicializarBarreras();
 
     sf::Texture fondoTexture;
     sf::Sprite fondoSprite;

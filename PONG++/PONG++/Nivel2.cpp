@@ -1,3 +1,4 @@
+// Nivel2.cpp
 #include "Nivel2.h"
 #include "Nivel3.h"
 #include "Pausa.h"
@@ -8,6 +9,7 @@ Nivel2::Nivel2(sf::RenderWindow& mainWindow, Musica& music)
     : window(mainWindow),
     paleta1(30, 250),
     paleta2(1150, 250),
+    paletaAutomatica(mainWindow.getSize().x / 2, 0),
     pelota(mainWindow.getSize().y / 2, mainWindow.getSize().x / 2, "pelota2.png"),
     musica(music),
     puntaje1(60, 20, "fuentenivel1.ttf"),
@@ -37,8 +39,6 @@ void Nivel2::run()
 {
     Pausa pausa(window);
     bool pausado = false;
-
-    // Variable para controlar si ya se reprodujo el sonido de choque con la pared
     bool choqueParedReproducido = false;
 
     while (window.isOpen())
@@ -79,8 +79,7 @@ void Nivel2::run()
 
         if (!pausado)
         {
-            // Lógica del juego cuando no está pausado
-
+            paletaAutomatica.move(window.getSize().y);
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
             {
                 paleta1.moveUp();
@@ -101,18 +100,15 @@ void Nivel2::run()
 
             pelota.updatePosition();
 
-            // Colisión de la pelota con las paletas
             if (pelota.getSprite().getGlobalBounds().intersects(paleta1.getShape().getGlobalBounds()) ||
-                pelota.getSprite().getGlobalBounds().intersects(paleta2.getShape().getGlobalBounds()))
+                pelota.getSprite().getGlobalBounds().intersects(paleta2.getShape().getGlobalBounds()) ||
+                pelota.getSprite().getGlobalBounds().intersects(paletaAutomatica.getShape().getGlobalBounds()))
             {
                 pelota.reverseX();
-                // No reproducir el sonido de choque de pelota aquí
             }
 
-            // Colisión de la pelota con los bordes de la ventana
             if (pelota.getSprite().getPosition().x <= 0 || pelota.getSprite().getPosition().x >= window.getSize().x - pelota.getRadio())
             {
-                // Reproduce el sonido de choque de pelota aquí solo si no se reprodujo antes
                 if (!choqueParedReproducido)
                 {
                     musica.reproducirChoquePelota();
@@ -161,14 +157,12 @@ void Nivel2::run()
             }
             else
             {
-                // Si la pelota no está en las paredes laterales, permite reproducir el sonido nuevamente
                 choqueParedReproducido = false;
             }
 
             if (pelota.getSprite().getPosition().y <= 0 || pelota.getSprite().getPosition().y >= window.getSize().y - pelota.getRadio() * 2)
             {
                 pelota.reverseY();
-                // No reproducir el sonido de choque de pelota aquí
             }
         }
 
@@ -176,6 +170,7 @@ void Nivel2::run()
         window.draw(fondoSprite);
         window.draw(paleta1.getShape());
         window.draw(paleta2.getShape());
+        window.draw(paletaAutomatica.getShape());
         window.draw(pelota.getSprite());
         window.draw(puntaje1.getTexto());
         window.draw(puntaje2.getTexto());

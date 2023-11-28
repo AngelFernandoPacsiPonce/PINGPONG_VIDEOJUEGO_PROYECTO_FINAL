@@ -1,3 +1,4 @@
+// Nivel2.h
 #pragma once
 
 #include <SFML/Graphics.hpp>
@@ -6,6 +7,7 @@
 #include "Musica.h"
 #include "Puntaje.h"
 #include "Ganador.h"
+#include "PaletaAutomatica.h"
 
 class Nivel2 {
 public:
@@ -16,6 +18,7 @@ private:
     sf::RenderWindow& window;
     Paleta paleta1;
     Paleta paleta2;
+    PaletaAutomatica paletaAutomatica;
     Pelota pelota;
     Musica& musica;
     Puntaje puntaje1;
