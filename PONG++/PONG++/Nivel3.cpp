@@ -52,6 +52,7 @@ void Nivel3::actualizarPosicionPaletasFijas() {
 void Nivel3::run() {
     Pausa pausa(window);
     bool pausado = false;
+    bool choqueParedReproducido = false;
 
     while (window.isOpen()) {
         sf::Event event;
@@ -112,6 +113,11 @@ void Nivel3::run() {
 
             // Colisión de la pelota con los bordes de la ventana
             if (pelota.getSprite().getPosition().x <= 0 || pelota.getSprite().getPosition().x >= window.getSize().x - pelota.getRadio()) {
+                if (!choqueParedReproducido) {
+                    musica.reproducirChoquePelota();
+                    choqueParedReproducido = true;
+                }
+
                 if (pelota.getSprite().getPosition().x <= 0) {
                     puntaje2.aumentarPuntaje();
                 }
@@ -129,6 +135,7 @@ void Nivel3::run() {
                         puntaje1.resetearPuntaje();
                         puntaje2.resetearPuntaje();
                         pelota.setPosition(window.getSize().x / 2, window.getSize().y / 2);
+                        choqueParedReproducido = false;
                     }
                     else if (opcion == 1) {
                         // Lógica para pasar al siguiente nivel
@@ -144,6 +151,9 @@ void Nivel3::run() {
                 pelota.setPosition(window.getSize().x / 2, window.getSize().y / 2);
                 pelota.reverseY();
                 pelota.setPosition(window.getSize().x / 2, window.getSize().y / 2);
+            }
+            else {
+                choqueParedReproducido = false;
             }
 
             if (pelota.getSprite().getPosition().y <= 0 || pelota.getSprite().getPosition().y >= window.getSize().y - pelota.getRadio() * 2) {
