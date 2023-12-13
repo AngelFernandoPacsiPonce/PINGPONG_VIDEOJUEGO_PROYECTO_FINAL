@@ -8,8 +8,8 @@ Pelota::Pelota(float startX, float startY, const std::string& texturaFile) : x(s
     pelota.setTexture(textura);
     pelota.setScale(radio / pelota.getLocalBounds().width, radio / pelota.getLocalBounds().height); // Ajuste de escala
     pelota.setPosition(x - radio - 2, y - radio - 2); // Ajuste de posición
-    velX = 0.2;
-    velY = 0.2;
+    velX = 0.3;
+    velY = 0.3;
 }
 
 void Pelota::updatePosition() {
